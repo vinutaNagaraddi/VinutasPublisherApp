@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+
+
+<project name="${app.name}" default="archive" basedir=".">
+	
+    <description>
+           Vinuta's Publisher Application
+    </description>
+	
+	<property file="build.properties"/>
+    
+
+	
+	<!-- ==================== Clean Target ==================================== -->
+
+	<!--
+	  The "clean" target deletes any previous "build" and "dist" directory,
+	  so that you can be ensured the application can be built from scratch.
+	-->
+	<target name="clean" description="Delete old build and dist directories">
+		<delete dir="${dist.home}"/>
+		<delete dir="${build.home}"/>
+	</target>
+
+	<!-- ==================== Init Target ================================== -->
+
+	<!--
+
+	  The "init" target is used to create the "build" destination directory,
+	  Normally, this task is executed indirectly when needed.
+
+	-->
+	<target name="init" depends="clean"  description="Create build directory">
+		
+		<mkdir dir="${build.home}" />
+
+	</target>
+	
+	<!-- ==================== Compile Target ================================== -->
+
+	<!--
+
+	  The "compile" target transforms source files (from your "src" directory)
+	  into class files in the appropriate location in the build directory.
+	  This example assumes that you will be including your classes in an
+	  unpacked directory hierarchy under "/WEB-INF/classes".
+
+	-->
+	<target name="compile" depends="init" description="Compile Java sources">
+		
+		
+		<mkdir dir="${build.home}/classes" />
+		
+		<javac srcdir="${source.home}"
+				destdir="${build.home}/classes"
+				debug="${compile.debug}"
+				deprecation="${compile.deprecation}"
+				optimize="${compile.optimize}"
+			     source="1.6" target="1.6">
+			
+			<classpath>
+				<path>
+			    	<fileset dir="${lib.home}" />
+			    </path>
+			</classpath>
+			
+		</javac>
+
+	</target>
+	
+	<!-- ==================== Build Target ================================== -->
+
+	<!--
+
+	  The "build" target copies all non class files to build directory
+
+	-->
+	
+	<target name="build" depends="compile" description="Copies all non Java classes to build directoy">
+		
+		<copy todir="${build.home}/classes">
+			<fileset dir="${source.home}" excludes="SVN,**/*.java,**/*.class,build.cfg.xml" />
+		</copy>
+	</target>
+	
+	<!-- ==================== Archive Target ================================== -->
+
+	<!--
+
+	  The "archive" target create a binary archive of all files in build.home
+
+	-->
+
+	<path id="classpath.hibernate">
+		<fileset dir="${lib.home}" includes="**/*.jar"/>
+		<pathelement location="${build.classes}"/>
+	</path>
+	
+	<taskdef name="htools" classname="org.hibernate.tool.ant.HibernateToolTask"
+	          classpathref="classpath.hibernate"/>
+
+	<target name="exportDDL" depends="build">
+		<delete dir="${sqlscripts.home}"/>
+		<mkdir dir="${sqlscripts.home}"/>
+		<htools destdir="${sqlscripts.home}">
+				<classpath refid="classpath.hibernate"/>
+			<annotationconfiguration configurationfile="${source.home}/build.cfg.xml"/>
+			<hbm2ddl drop="true" outputfilename="sample.sql"/>
+		</htools>
+	</target>
+	
+	<target name="archive" depends="build,exportDDL" description="Create binary archive of all files in dist.home">
+		
+		<mkdir dir="${dist.home}" />
+		
+		<copy todir="${dist.home}">
+			<fileset dir="${webapp.home}" />
+		</copy>
+		
+		<copy todir="${dist.home}/WEB-INF/classes">
+			<fileset dir="${build.home}/classes"  />
+		</copy>
+		
+		<delete file="${tomcat.webapp}/${app.name}.war"/>
+		
+		<delete dir="${tomcat.webapp}/${app.name}"/>
+		
+	    <jar jarfile="${tomcat.webapp}/${app.name}.war"
+				basedir="${dist.home}" />
+		
+	</target>	
+	
+	
+</project>
+

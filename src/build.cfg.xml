@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE hibernate-configuration PUBLIC 
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd"> 
+<hibernate-configuration> 
+<session-factory> 
+<property name="hibernate.connection.driver_class"> org.hsqldb.jdbcDriver</property> 
+<property name="hibernate.connection.url">jdbc:hsqldb:file:c:/database/testdb</property> 
+<property name="hibernate.connection.username">VINUTA</property> 
+<property name="connection.password">VINUTA</property> 
+<property name="hibernate.dialect"> org.hibernate.dialect.HSQLDialect</property> 
+<property name="show_sql">true</property> 
+
+<mapping class="main.java.com.vinuta.entity.Magazine"/> 
+<mapping class="main.java.com.vinuta.entity.Article"/>
+<mapping class="main.java.com.vinuta.entity.Author"/>
+<mapping class="main.java.com.vinuta.entity.Book"/> 
+<mapping class="main.java.com.vinuta.entity.Novel"/>
+<mapping class="main.java.com.vinuta.entity.ComicBook"/>
+<mapping class="main.java.com.vinuta.entity.Chapter"/>
+<mapping class="main.java.com.vinuta.entity.Office"/>
+<mapping class="main.java.com.vinuta.entity.Address"/>
+
+</session-factory> 
+</hibernate-configuration>

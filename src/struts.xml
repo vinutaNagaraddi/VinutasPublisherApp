@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+
+	<package name="basicPackage" extends="struts-default">
+		<action name="hello">
+			<result>HelloWorldTest.jsp</result>
+		</action>
+    </package>
+    
+    <package name="magazine" extends="struts-default">
+		<action name="addMagazine" class="magazineAction" method="addMagazine">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="updateMagazine" class="magazineAction" method="updateMagazine">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="deleteMagazine" class="magazineAction" method="deleteMagazine">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="listMagazines" class="magazineAction" method="listMagazines">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+    </package>
+    
+     <package name="book" extends="struts-default">
+		<action name="addBook" class="bookAction" method="addBook">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="updateBook" class="bookAction" method="updateBook">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="deleteBook" class="bookAction" method="deleteBook">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="listBooks" class="bookAction" method="listBooks">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+    </package>
+    
+     <package name="office" extends="struts-default">
+		<action name="addOffice" class="officeAction" method="addOffice">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="updateOffice" class="officeAction" method="updateOffice">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="deleteOffice" class="officeAction" method="deleteOffice">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+		<action name="listOffices" class="officeAction" method="listOffices">
+			<result>/HelloWorldTest.jsp</result>
+		</action>
+    </package>
+    
+</struts>
