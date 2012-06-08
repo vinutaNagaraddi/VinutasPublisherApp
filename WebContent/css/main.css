@@ -1,0 +1,21 @@
+body {
+	margin: 0;
+	font: 8px verdana,arial;
+	text-align:center;
+}
+table{
+	padding:5px;
+	border-collapse:collapse;
+	border:1px solid black;
+	text-align:left;
+}
+td{
+	border:1px solid black;
+	font: 15px verdana,arial;
+	padding:5px;
+}
+th{
+	font: 20px verdana,arial;
+	border:1px solid black;
+	padding:5px;
+}
