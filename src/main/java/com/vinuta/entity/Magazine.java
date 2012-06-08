@@ -2,6 +2,7 @@ package main.java.com.vinuta.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -29,7 +30,7 @@ public class Magazine implements Serializable{
 	@Version
 	private Integer version;
 	
-	@Column(name="magazine_name", nullable=true)
+	@Column(name="magazine_name", nullable=false)
 	private String magazineName;
 	
 	private Double price;
@@ -37,18 +38,18 @@ public class Magazine implements Serializable{
 	@Column(name="av_online")
 	private Boolean availableOnline;
 	
-	@Column(name="publish_date")
+	@Column(name="publish_date", nullable=false)
 	private Date publishDate;
 	
 	@OneToMany(mappedBy="magazine",orphanRemoval=true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Cascade(value={CascadeType.ALL})
-	private Set<Article> articles;
+	private List<Article> articles;
 	
 	public Magazine(){};
 	
 	public Magazine(String magazineName, Double price,Boolean availableOnline, Date publishDate, 
-			Set<Article> articles) {
+			List<Article> articles) {
 		super();
 		this.magazineName = magazineName;
 		this.price = price;
@@ -93,10 +94,10 @@ public class Magazine implements Serializable{
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public Set<Article> getArticles() {
+	public List<Article> getArticles() {
 		return articles;
 	}
-	public void setArticles(Set<Article> articles) {
+	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
 	public Boolean getAvailableOnline() {

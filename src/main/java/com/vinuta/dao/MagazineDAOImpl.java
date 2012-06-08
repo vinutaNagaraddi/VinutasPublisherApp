@@ -13,10 +13,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(propagation=Propagation.REQUIRED)
 public class MagazineDAOImpl extends HibernateDAO implements MagazineDAO{
 
-
+	private Logger logger = Logger.getLogger(this.getClass());
+	
+	
 	@Override
 	public void addMagazine(Magazine magazine) {
 		// TODO Auto-generated method stub
+		logger.debug(magazine.toString());
 		this.saveOrUpdate(magazine);
 	}
 

@@ -1,6 +1,7 @@
 package main.java.com.vinuta.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -49,12 +50,12 @@ public class Article implements Serializable {
 		inverseJoinColumns = { @JoinColumn(name = "author_id") }) 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Cascade(value={CascadeType.SAVE_UPDATE})
-	private Set<Author> authors;
+	private List<Author> authors;
 	
 	public Article(){};
 	
 	public Article(String title, Integer noOfPages,
-			Set<Author> authors) {
+			List<Author> authors) {
 		super();
 		this.title = title;
 		this.noOfPages = noOfPages;
@@ -95,10 +96,10 @@ public class Article implements Serializable {
 	public void setNoOfPages(Integer noOfPages) {
 		this.noOfPages = noOfPages;
 	}
-	public Set<Author> getAuthors() {
+	public List<Author> getAuthors() {
 		return authors;
 	}
-	public void setAuthors(Set<Author> authors) {
+	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
 

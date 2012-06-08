@@ -14,8 +14,12 @@
     </package>
     
     <package name="magazine" extends="struts-default">
+    	<action name="showAddMagazineJSP" class="magazineAction">
+			<result>/jsp/magazine/AddMagazine.jsp</result>
+		</action>
 		<action name="addMagazine" class="magazineAction" method="addMagazine">
-			<result>/HelloWorldTest.jsp</result>
+			<result type="redirectAction">listMagazines</result> 
+  			<result name="input">/jsp/magazine/AddMagazine.jsp</result> 
 		</action>
 		<action name="updateMagazine" class="magazineAction" method="updateMagazine">
 			<result>/HelloWorldTest.jsp</result>
@@ -24,7 +28,7 @@
 			<result>/HelloWorldTest.jsp</result>
 		</action>
 		<action name="listMagazines" class="magazineAction" method="listMagazines">
-			<result>/HelloWorldTest.jsp</result>
+			<result >/jsp/magazine/ListMagazines.jsp</result>
 		</action>
     </package>
     

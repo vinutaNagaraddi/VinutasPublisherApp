@@ -15,13 +15,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 
-public class MagazineAction extends ActionSupport{
-	
-	private Logger logger = Logger.getLogger(this.getClass());
-	
+@SuppressWarnings("serial")
+public class MagazineAction extends ActionSupport implements ModelDriven{
 	@Autowired
 	private MagazineService magazineServiceImpl;
+	
+	private Logger logger = Logger.getLogger(this.getClass());
+	private List<Magazine> magazines;
+	private Magazine magazine;
+	public static Integer NO_OF_ARTICLES = 3;
+	public static Integer NO_OF_AUTHORS = 2;
 	
 	public MagazineService getMagazineServiceImpl() {
 		return magazineServiceImpl;
@@ -31,82 +36,51 @@ public class MagazineAction extends ActionSupport{
 		this.magazineServiceImpl = magazineServiceImpl;
 	}
 
+	public List<Magazine> getMagazines() {
+		return magazines;
+	}
+
+	public void setMagazines(List<Magazine> magazines) {
+		this.magazines = magazines;
+	}
+
+	public Magazine getMagazine() {
+		return magazine;
+	}
+
+	public void setMagazine(Magazine magazine) {
+		this.magazine = magazine;
+	}
+	
+	@Override
+	public Object getModel() {
+		// TODO Auto-generated method stub
+		return new Magazine();
+	}
+	
+	public String execute(){
+		return SUCCESS;
+	}
+	
 	public String addMagazine(){
-		Author author1 = new Author("firstName1", "lastName1");
-		Author author2 = new Author("firstName2", "lastName2");
-		Author author3 = new Author("firstName3", "lastName3");
-		
-		Set<Author> authors1 = new HashSet<Author>();
-		authors1.add(author1);
-		authors1.add(author2);
-		
-		Set<Author> authors2 = new HashSet<Author>();
-		authors2.add(author3);
-		
-		Set<Article> articles = new HashSet<Article>();
-		Article article1 = new Article("title1", 10, authors1);
-		Article article2 = new Article("title2", 20, authors2);
-		Article article3 = new Article("title3", 20, authors2);
-		
-		articles.add(article1);
-		articles.add(article2);
-		articles.add(article3);
-		
-		Calendar c = Calendar.getInstance();
-		c.set(2010, 11, 14);
-		
-		Magazine magazine = new Magazine("magazineName1", 11.99,new Boolean(true), c.getTime(), articles);
-		article1.setMagazine(magazine);
-		article2.setMagazine(magazine);
-		article3.setMagazine(magazine);
-		
 		this.magazineServiceImpl.addMagazine(magazine);
-		
 		return SUCCESS;
 	}
 	
 	public String updateMagazine(){
-		Author author1 = new Author("fn1", "ln1");
-		Author author2 = new Author("firstName2", "lastName2");
-		Author author3 = new Author("firstName3", "lastName3");
-		
-		Set<Author> authors1 = new HashSet<Author>();
-		authors1.add(author1);
-		authors1.add(author2);
-		
-		Set<Author> authors2 = new HashSet<Author>();
-		authors2.add(author3);
-		
-		Article article1 = new Article("title1", 10, authors1);
-		Article article2 = new Article("articletitle2", 20, authors2);
-		
-		Set<Article> articles = new HashSet<Article>();
-		articles.add(article1);
-		articles.add(article1);
-		
-		Calendar c = Calendar.getInstance();
-		c.set(2009, 11, 14);
-		
-		Magazine magazine = new Magazine("magazineName1", 11.99, 
-					new Boolean(true), c.getTime(), articles);
-		article1.setMagazine(magazine);
-		article2.setMagazine(magazine);
-		
 		this.magazineServiceImpl.updateMagazine(magazine);
-		
 		return SUCCESS;
 	}
 	
 	public String deleteMagazine(){
-		this.magazineServiceImpl.deleteMagazine(new Long(1));
+		this.magazineServiceImpl.deleteMagazine(magazine.getId());
 		return SUCCESS;
 	}
 	
 	public String listMagazines(){
-		List<Magazine> magazines = this.magazineServiceImpl.listMagazines();
-		for (Magazine m : magazines){
-			logger.debug(m.toString());
-		}
+		this.magazines = this.magazineServiceImpl.listMagazines();
+		
 		return SUCCESS;
 	}
+
 }
