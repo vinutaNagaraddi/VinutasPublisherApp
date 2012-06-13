@@ -10,10 +10,6 @@
     </appender>
  
     <!-- specify the logging level for loggers from other libraries 
-    <logger name="com.opensymphony">
-    	<level value="WARN" />
-    </logger>
-
 	<logger name="org.springframework.beans">
     	<level value="WARN" />
     </logger>

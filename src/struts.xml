@@ -18,7 +18,7 @@
 			<result>/jsp/magazine/AddMagazine.jsp</result>
 		</action>
 		<action name="addMagazine" class="magazineAction" method="addMagazine">
-			<result type="redirectAction">listMagazines</result> 
+			<result name="success" type="redirectAction">listMagazines</result> 
   			<result name="input">/jsp/magazine/AddMagazine.jsp</result> 
 		</action>
 		<action name="updateMagazine" class="magazineAction" method="updateMagazine">

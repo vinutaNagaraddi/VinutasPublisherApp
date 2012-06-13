@@ -19,3 +19,7 @@ th{
 	border:1px solid black;
 	padding:5px;
 }
+.errorMessage{
+	color:red;
+	font: 10px verdana,arial;
+}

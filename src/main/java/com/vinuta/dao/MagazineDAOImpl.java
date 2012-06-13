@@ -19,7 +19,6 @@ public class MagazineDAOImpl extends HibernateDAO implements MagazineDAO{
 	@Override
 	public void addMagazine(Magazine magazine) {
 		// TODO Auto-generated method stub
-		logger.debug(magazine.toString());
 		this.saveOrUpdate(magazine);
 	}
 

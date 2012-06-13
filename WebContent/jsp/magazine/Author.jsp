@@ -6,7 +6,7 @@
 				<s:property value="%{getText('author.lastName')}"/>
 			</td>
 			<td>
-				<s:textfield name="%{'magazine.articles['+#articleStat.index+'].authors['+#authorStat.index+'].lastName'}"/>
+				<s:textfield key="%{'magazine.articles['+#articleStat.index+'].authors['+#authorStat.index+'].lastName'}"/>
 			</td>
 		</tr>
 		<tr>	
@@ -14,7 +14,7 @@
 				<s:property value="%{getText('author.firstName')}"/>
 			</td>
 			<td>
-				<s:textfield name="%{'magazine.articles['+#articleStat.index+'].authors['+#authorStat.index+'].firstName'}"/>
+				<s:textfield key="%{'magazine.articles['+#articleStat.index+'].authors['+#authorStat.index+'].firstName'}"/>
 			</td>
 		</tr>
 	</table>

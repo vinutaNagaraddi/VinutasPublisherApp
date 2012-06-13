@@ -6,6 +6,7 @@
 </head>
 <body>
 	<h3><s:property value="%{getText('addMazine.heading')}"/></h3>
+	<s:fielderror/>
 	<s:form theme="simple">
 		<table>
 			<tr>	
@@ -21,7 +22,7 @@
 					<s:property value="%{getText('magazine.price')}"/>
 				</td>
 				<td>
-					<s:textfield  key="magazine.price"/>
+					<s:textfield  key="magazine.price" tooltip="ex. 2.99"/>
 				</td>
 			</tr>
 			<tr>	
@@ -37,7 +38,7 @@
 					<s:property value="%{getText('magazine.publishDate')}"/>
 				</td>
 				<td>
-					<s:textfield key="magazine.publishDate"/>
+					<s:textfield key="magazine.publishDate" tooltip="ex. 10/10/1990"/>
 				</td>
 			</tr>
 			<s:iterator value='new int[@main.java.com.vinuta.action.MagazineAction@NO_OF_ARTICLES]' 

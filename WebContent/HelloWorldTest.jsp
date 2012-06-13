@@ -8,8 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-<p><a href="<s:url action='magazine/updateMagazine'/>">Update Magazine</a></p>
-<p><a href="<s:url action='magazine/deleteMagazine'/>">Delete Magazine</a></p>
 <p><a href="<s:url action='magazine/listMagazines'/>">List all Magazine</a></p>
 
 <p><a href="<s:url action='book/addBook'/>">Add Book</a></p>

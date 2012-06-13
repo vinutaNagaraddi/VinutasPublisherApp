@@ -6,7 +6,7 @@
 				<s:property value="%{getText('article.title')}"/>
 			</td>
 			<td>
-				<s:textfield name="%{'magazine.articles['+#articleStat.index+'].title'}"/>
+				<s:textfield key="%{'magazine.articles['+#articleStat.index+'].title'}"/>
 			</td>
 		</tr>
 		<tr>	
@@ -14,7 +14,7 @@
 				<s:property value="%{getText('article.noOfPages')}"/>
 			</td>
 			<td>
-				<s:textfield name="%{'magazine.articles['+#articleStat.index+'].noOfPages'}"/>
+				<s:textfield key="%{'magazine.articles['+#articleStat.index+'].noOfPages'}"/>
 			</td>
 		</tr>
 		<s:iterator value="new int[@main.java.com.vinuta.action.MagazineAction@NO_OF_AUTHORS]" 
