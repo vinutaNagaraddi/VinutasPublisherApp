@@ -82,9 +82,6 @@ public class MagazineAction extends ActionSupport{
 	}
 	
 	public void validateAddMagazine(){
-		if (magazine.getPublishDate() == null){
-			this.addFieldError("magazine.publishDate", "Publish Date is required");
-		}
+		logger.debug(magazine.toString());
 	}
-
 }

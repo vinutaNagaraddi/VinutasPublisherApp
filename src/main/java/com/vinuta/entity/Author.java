@@ -25,7 +25,7 @@ public class Author implements Serializable{
 	@Version
 	private Integer version;
 	
-	@Column(name="first_name")
+	@Column(name="first_name", nullable=false)
 	private String firstName;
 	
 	@Column(name="last_name", nullable=false)

@@ -26,9 +26,9 @@
 		<s:iterator value="magazines" status="rowstatus">
 		<tr>
 	    	<td><s:property value="id"/></td>
-	    	<td><s:property value="magazineName"/></td>
+	    	<td><s:property value="name"/></td>
 	    	<td>
-	    		<s:date name="publishDate" var="formatedPublishDate" format = "MMM d, yyyy"/>
+	    		<s:date name="publishDate" var="formatedPublishDate" format = "MM/dd/yyyy"/>
 	    		<s:property value="#formatedPublishDate"/>
 	    	</td>
 	    	<td>

@@ -14,7 +14,7 @@
 					<s:property value="%{getText('magazine.name')}"/>
 				</td>
 				<td>
-					<s:textfield key="magazine.magazineName"/>
+					<s:textfield key="magazine.name"/>
 				</td>
 			</tr>
 			<tr>	
@@ -22,7 +22,7 @@
 					<s:property value="%{getText('magazine.price')}"/>
 				</td>
 				<td>
-					<s:textfield  key="magazine.price" tooltip="ex. 2.99"/>
+					<s:textfield  key="magazine.price" />
 				</td>
 			</tr>
 			<tr>	
@@ -38,7 +38,13 @@
 					<s:property value="%{getText('magazine.publishDate')}"/>
 				</td>
 				<td>
-					<s:textfield key="magazine.publishDate" tooltip="ex. 10/10/1990"/>
+					<s:date name="magazine.publishDate" format="MM/dd/yyyy" var="myDateVar"/>
+					<s:if test="%{#myDateVar==null}">
+						<s:textfield key="magazine.publishDate"/>
+					</s:if>
+					<s:else>
+						<s:textfield key="magazine.publishDate" value="%{#myDateVar}"/>
+					</s:else>	
 				</td>
 			</tr>
 			<s:iterator value='new int[@main.java.com.vinuta.action.MagazineAction@NO_OF_ARTICLES]' 

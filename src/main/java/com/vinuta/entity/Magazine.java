@@ -30,8 +30,8 @@ public class Magazine implements Serializable{
 	@Version
 	private Integer version;
 	
-	@Column(name="magazine_name", nullable=false)
-	private String magazineName;
+	@Column(name="name", nullable=false)
+	private String name;
 	
 	private Double price;
 	
@@ -48,10 +48,10 @@ public class Magazine implements Serializable{
 	
 	public Magazine(){};
 	
-	public Magazine(String magazineName, Double price,Boolean availableOnline, Date publishDate, 
+	public Magazine(String name, Double price,Boolean availableOnline, Date publishDate, 
 			List<Article> articles) {
 		super();
-		this.magazineName = magazineName;
+		this.name = name;
 		this.price = price;
 		this.availableOnline = availableOnline;
 		this.publishDate = publishDate;
@@ -82,11 +82,12 @@ public class Magazine implements Serializable{
 		this.publishDate = publishDate;
 	}
 
-	public String getMagazineName() {
-		return magazineName;
+	public String getName() {
+		return name;
 	}
-	public void setMagazineName(String magazineName) {
-		this.magazineName = magazineName;
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	public Double getPrice() {
 		return price;
@@ -110,7 +111,7 @@ public class Magazine implements Serializable{
 	@Override
 	public String toString() {
 		return "Magazine [id=" + id + ", version=" + version
-				+ ", magazineName=" + magazineName + ", price=" + price
+				+ ", name=" + name + ", price=" + price
 				+ ", availableOnline=" + availableOnline + ", publishDate="
 				+ publishDate + ", articles=" + articles + "]";
 	}

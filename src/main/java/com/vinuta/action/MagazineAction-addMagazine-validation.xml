@@ -3,21 +3,29 @@
         "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 
 <validators>
-	<field name="magazine.magazineName">
+	<field name="magazine.name">
 		<field-validator type="requiredstring">
-            <message>Name is required</message>
+             <message key="error.required"/>
         </field-validator>
 	</field>
 	<field name="magazine.publishDate">
+		<field-validator type="required" short-circuit="true">
+            <message key="error.required"/>
+        </field-validator>
         <field-validator type="date">
   			<param name="min">01/01/1990</param>
- 			 <message>Publish Date must be after ${min}</message>
+ 			 <message key="error.magazine.publishDate.minDate"/>
   		</field-validator>
 	</field>
 	<field name="magazine.price">
 		<field-validator type="double">
 			<param name="minInclusive">0.00</param>
-			<message>Price must be larger than 0.00</message>
+			<message key="error.magazine.price.minAmount"/>
+        </field-validator>
+	</field>
+	<field name="magazine.articles">
+		<field-validator type="visitor">
+			<message>Article : </message>
         </field-validator>
 	</field>
 </validators>
