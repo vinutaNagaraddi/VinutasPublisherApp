@@ -1,0 +1,24 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="lastName">
+		<field-validator type="fieldexpression">
+			 <param name="expression"><![CDATA[
+  				 !((!firstName.equals("") && lastName.equals("")))
+   				]]>
+   			</param>
+  			<message key="error.author.lastName.required"/>
+		</field-validator>
+	</field>
+	<field name="firstName">
+		<field-validator type="fieldexpression">
+			 <param name="expression"><![CDATA[
+  				 !((!lastName.equals("") && firstName.equals("")))
+   				]]>
+   			</param>
+  			<message key="error.author.firstName.required"/>
+		</field-validator>
+	</field>
+</validators>

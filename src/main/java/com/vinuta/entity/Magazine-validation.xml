@@ -1,0 +1,40 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="magazine.name">
+		<field-validator type="requiredstring">
+             <message key="error.required"/>
+        </field-validator>
+	</field>
+	<field name="magazine.publishDate">
+		<field-validator type="required" short-circuit="true">
+            <message key="error.required"/>
+        </field-validator>
+        <field-validator type="date">
+  			<param name="min">01/01/1990</param>
+ 			 <message key="error.magazine.publishDate.minDate"/>
+  		</field-validator>
+	</field>
+	<field name="magazine.price">
+		<field-validator type="double">
+			<param name="minInclusive">0.00</param>
+			<message key="error.magazine.price.minAmount"/>
+        </field-validator>
+	</field>
+	<field name="magazine.articles">
+		<field-validator type="fieldexpression" short-circuit="true">
+			<param name="expression"><![CDATA[
+  			   !(magazine.articles[0].title.equals("") 
+  			   		|| magazine.articles[0].authors[0].lastName.equals("")
+  			   			|| magazine.articles[0].authors[0].firstName.equals(""))
+   				]]>
+			</param>
+			<message key="error.magazine.article1.required"/>
+		</field-validator>
+		<field-validator type="visitor">
+			<message>Article : </message>
+        </field-validator>
+	</field>
+</validators>

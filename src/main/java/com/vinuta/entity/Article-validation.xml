@@ -1,0 +1,43 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+
+	<field name="title">
+		<field-validator type="fieldexpression">
+			 <param name="expression"><![CDATA[
+  				 !((!title.equals("") && authors[0].firstName.equals("")))
+   				]]>
+   			</param>
+  			<message key="error.article.title.author1.firstName.required"/>
+		</field-validator>
+		<field-validator type="fieldexpression">
+			<param name="expression"><![CDATA[
+    			 !((!title.equals("") && authors[0].lastName.equals("")))
+   				]]>
+   			</param>
+  			<message key="error.article.title.author1.lastName.required"/> 
+		</field-validator>
+		<field-validator type="fieldexpression">
+		 	<param name="expression"><![CDATA[
+ 		    	!((title.equals("") && !authors[0].lastName.equals("")))
+   				]]>
+   			</param>
+  			<message key="error.article.author1.lastName.title.required"/>
+		</field-validator>
+		<field-validator type="fieldexpression">
+		 	<param name="expression"><![CDATA[
+    			!((title.equals("") && !authors[0].firstName.equals("")))
+   				]]>
+   			</param>
+  			<message key="error.article.author1.firstName.title.required"/>
+		</field-validator>
+	</field>
+
+	<field name="authors">
+		<field-validator type="visitor">
+			<message>Author : </message>
+        </field-validator>
+	</field>
+</validators>
