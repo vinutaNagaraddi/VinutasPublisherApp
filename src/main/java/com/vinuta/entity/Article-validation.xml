@@ -3,7 +3,6 @@
         "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 
 <validators>
-
 	<field name="title">
 		<field-validator type="fieldexpression">
 			 <param name="expression"><![CDATA[
@@ -34,7 +33,6 @@
   			<message key="error.article.author1.firstName.title.required"/>
 		</field-validator>
 	</field>
-
 	<field name="authors">
 		<field-validator type="visitor">
 			<message>Author : </message>

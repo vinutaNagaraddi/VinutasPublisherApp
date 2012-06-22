@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Cascade;
@@ -24,7 +25,9 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@Table(name="ARTICLE", schema ="PUBLISHERAPP")
+@Table(name="ARTICLE", schema ="PUBLISHERAPP",
+	uniqueConstraints= @UniqueConstraint(columnNames={"title", "magazine_id"})
+)
 public class Article implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -39,7 +42,7 @@ public class Article implements Serializable {
 	@Cascade(value={CascadeType.SAVE_UPDATE})
 	private Magazine magazine;
 	
-	@Column(nullable=false , unique=true)
+	@Column(nullable=false)
 	private String title;
 	
 	@Column(name="no_of_pages")

@@ -24,6 +24,9 @@
 		<action name="updateMagazine" class="magazineAction" method="updateMagazine">
 			<result>/HelloWorldTest.jsp</result>
 		</action>
+		<action name="showDetails" class="magazineAction" method="detailsMagazine">
+  			<result>/jsp/magazine/DetailMagazine.jsp</result> 
+		</action>
 		<action name="deleteMagazine" class="magazineAction" method="deleteMagazine">
 			<result>/HelloWorldTest.jsp</result>
 		</action>

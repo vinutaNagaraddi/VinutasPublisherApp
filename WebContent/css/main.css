@@ -23,3 +23,6 @@ th{
 	color:red;
 	font: 10px verdana,arial;
 }
+.requiredField{
+	  color:red;
+}

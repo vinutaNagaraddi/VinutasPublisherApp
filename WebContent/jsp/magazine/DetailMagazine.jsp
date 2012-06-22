@@ -1,0 +1,63 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<html>
+<head>
+<title>Magazine Details</title>
+<style type="text/css">@import url(css/main.css);</style>
+</head>
+<body>
+	<h3><s:property value="%{getText('detailMagazine.heading')}"/></h3>
+	<s:form theme="simple">
+		<table>
+			<tr>	
+				<td>
+					<s:property value="%{getText('magazine.name')}"/>
+				</td>
+				<td>
+					<s:property value="magazine.name"/>
+				</td>
+			</tr>
+			<tr>	
+				<td>
+					<s:property value="%{getText('magazine.price')}"/>
+				</td>
+				<td>
+					<s:property value="magazine.price"/>
+				</td>
+			</tr>
+			<tr>	
+				<td>
+					<s:property value="%{getText('magazine.avOnline')}"/>
+				</td>
+				<td>
+					<s:checkbox key="magazine.availableOnline" disabled="true"/>
+				</td>
+			</tr>
+			<tr>	
+				<td>
+					<s:property value="%{getText('magazine.publishDate')}"/>
+				</td>
+				<td>
+					<s:date name="magazine.publishDate" var="formatedPublishDate" format = "MM/dd/yyyy"/>
+	    			<s:property value="#formatedPublishDate"/>
+				</td>
+			</tr>
+			<s:iterator value='magazine.articles' status="articleStat"> 
+			<tr>	
+				<td>
+					<s:property value="%{getText('magazine.arictle')}"/>
+					<s:property value="%{#articleStat.count}"/>
+				</td>
+				<td>
+					<%@ include file="DetailArticle.jsp" %>
+				</td>
+			</tr>
+			</s:iterator>
+			<tr>
+				<td colspan="2"  align="center">
+					<s:submit action="listMagazines" namespace="magazine" value="List Magazines"/>
+				</td>
+			</tr>
+		</table>
+	</s:form>
+</body>
+</html>

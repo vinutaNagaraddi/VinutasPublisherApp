@@ -1,10 +1,12 @@
 package main.java.com.vinuta.action;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import main.java.com.vinuta.entity.Article;
+import main.java.com.vinuta.entity.Author;
 import main.java.com.vinuta.entity.Magazine;
 import main.java.com.vinuta.service.MagazineService;
 
@@ -55,24 +57,24 @@ public class MagazineAction extends ActionSupport{
 	}
 	
 	public String addMagazine(){
-		logger.debug(magazine.toString());
-		List<Article> articleList = magazine.getArticles();
-		Iterator<Article> i = articleList.iterator();
-		while(i.hasNext()){
-			Article article= i.next();
-			article.setMagazine(magazine);
-		}
+		List<Article> articles = getNonEmptyArticles();
+		magazine.setArticles(articles);
 		this.magazineServiceImpl.addMagazine(magazine);
 		return SUCCESS;
 	}
-	
+
 	public String updateMagazine(){
 		this.magazineServiceImpl.updateMagazine(magazine);
 		return SUCCESS;
 	}
 	
+	public String detailsMagazine(){
+		magazine = this.magazineServiceImpl.getMagazine(this.magazine.getId());
+		return SUCCESS;
+	}
+	
 	public String deleteMagazine(){
-		this.magazineServiceImpl.deleteMagazine(magazine.getId());
+		this.magazineServiceImpl.deleteMagazine(this.magazine.getId());
 		return SUCCESS;
 	}
 	
@@ -81,7 +83,47 @@ public class MagazineAction extends ActionSupport{
 		return SUCCESS;
 	}
 	
-	public void validateAddMagazine(){
-		logger.debug(magazine.toString());
+	//get list of articles with non-empty values
+	private List<Article> getNonEmptyArticles() {
+		List<Article> articles = new ArrayList<Article>();
+		
+		//iterator through empty and non-empty articles
+		Iterator<Article> articlesIterator = magazine.getArticles().iterator();
+		while(articlesIterator.hasNext()){
+			Article article= articlesIterator.next();
+			
+			if(article.getTitle().isEmpty()){
+				continue;
+			}
+			
+			//reset authors list with authors that have values entered
+			article.setAuthors(getNonEmptyAuthorsList(article));
+			article.setMagazine(magazine);
+			
+			//add the article with values to the new list
+			articles.add(article);
+		}
+		return articles;
 	}
+	
+	//get list of authors with non-empty values
+	private List<Author> getNonEmptyAuthorsList(Article article){
+		List<Author> authors = new ArrayList<Author>();
+		
+		//iterator through empty and non-empty authors
+		Iterator<Author> authorsIterator = article.getAuthors().iterator();
+		while(authorsIterator.hasNext()){
+			Author author = authorsIterator.next();
+			
+			if(author.getLastName().isEmpty() && author.getFirstName().isEmpty()){
+				continue;
+			}
+			
+			//add the author with values to the new list
+			authors.add(author);
+		}
+		
+		return authors;
+	}
+	
 }

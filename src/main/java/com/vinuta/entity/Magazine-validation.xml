@@ -36,5 +36,8 @@
 		<field-validator type="visitor">
 			<message>Article : </message>
         </field-validator>
+        <field-validator type="uniqueArticleValidator">
+			<message>Article title must be unique for the magazine</message>
+        </field-validator>
 	</field>
 </validators>

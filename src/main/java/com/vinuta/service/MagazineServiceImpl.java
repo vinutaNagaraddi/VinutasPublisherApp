@@ -44,4 +44,10 @@ public class MagazineServiceImpl implements MagazineService{
 		return this.magazineDAOImpl.listMagazines();
 	}
 
+	@Override
+	public Magazine getMagazine(Long id) {
+		// TODO Auto-generated method stub
+		return this.magazineDAOImpl.getMagazine(id);
+	}
+
 }

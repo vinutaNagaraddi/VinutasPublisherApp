@@ -10,4 +10,5 @@ public interface MagazineDAO {
 	void updateMagazine(Magazine magazine);
 	void deleteMagazine(Long id);
 	List<Magazine> listMagazines();
+	Magazine getMagazine(Long id);
 }

@@ -2,9 +2,16 @@
 
 	<table>
 		<tr>	
-			<td>
-				<s:property value="%{getText('article.title')}"/>
-			</td>
+			<s:if test="#articleStat.index==0">
+				<td class="requiredField">
+					<s:property value="%{getText('article.title')}"/>
+				</td>
+			</s:if>
+			<s:else>
+				<td>
+					<s:property value="%{getText('article.title')}"/>
+				</td>
+			</s:else>
 			<td>
 				<s:textfield key="%{'magazine.articles['+#articleStat.index+'].title'}"/>
 			</td>
@@ -25,7 +32,7 @@
 					<s:property value="%{#authorStat.count}"/>
 				</td>
 				<td>
-					<%@ include file="Author.jsp" %>
+					<%@ include file="../author/Author.jsp" %>
 				</td>
 			</tr>
 		</s:iterator>

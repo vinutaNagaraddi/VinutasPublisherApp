@@ -33,13 +33,13 @@
 	    	</td>
 	    	<td>
 	    		<s:url action="showDetails" id="showDetails">
-					<s:param name="id" value="id"/>
+					<s:param name="magazine.id" value="id"/>
 				</s:url>
 				<s:url action="updateMagazine" id="updateMag">
-					<s:param name="id" value="id"/>
+					<s:param name="magazine.id" value="id"/>
 				</s:url>
 				<s:url action="deleteMagazine" id="deleteMag">
-					<s:param name="id" value="id"/>
+					<s:param name="magazine.id" value="id"/>
 				</s:url>
 	    		<s:a href="%{showDetails}"><s:property value="%{getText('details')}"/></s:a>
 	    		<s:a href="%{updateMag}"><s:property value="%{getText('update')}"/></s:a>

@@ -15,7 +15,6 @@ public class MagazineDAOImpl extends HibernateDAO implements MagazineDAO{
 
 	private Logger logger = Logger.getLogger(this.getClass());
 	
-	
 	@Override
 	public void addMagazine(Magazine magazine) {
 		// TODO Auto-generated method stub
@@ -31,8 +30,7 @@ public class MagazineDAOImpl extends HibernateDAO implements MagazineDAO{
 	@Override
 	public void deleteMagazine(Long id) {
 		// TODO Auto-generated method stub
-		Magazine magazine = (Magazine) this.currentSession().get(Magazine.class, id);
-		this.delete(magazine);
+		this.delete(getMagazineById(id));
 	}
 
 	@Override
@@ -42,4 +40,16 @@ public class MagazineDAOImpl extends HibernateDAO implements MagazineDAO{
 		Query magazineQuery = this.currentSession().createQuery("from Magazine");
 		return magazineQuery.list();
 	}
+
+	@Override
+	public Magazine getMagazine(Long id) {
+		// TODO Auto-generated method stub
+		return getMagazineById(id);
+	}
+	
+	private Magazine getMagazineById(Long id) {
+		Magazine magazine = (Magazine) this.currentSession().get(Magazine.class, id);
+		return magazine;
+	}
+
 }

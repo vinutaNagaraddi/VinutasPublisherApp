@@ -10,7 +10,7 @@
 	<s:form theme="simple">
 		<table>
 			<tr>	
-				<td>
+				<td class="requiredField">
 					<s:property value="%{getText('magazine.name')}"/>
 				</td>
 				<td>
@@ -34,7 +34,7 @@
 				</td>
 			</tr>
 			<tr>	
-				<td>
+				<td class="requiredField">
 					<s:property value="%{getText('magazine.publishDate')}"/>
 				</td>
 				<td>
