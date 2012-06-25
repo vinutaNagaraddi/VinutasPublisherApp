@@ -10,10 +10,23 @@
     </appender>
  
     <!-- specify the logging level for loggers from other libraries 
-	<logger name="org.springframework.beans">
+    -->
+    
+    <logger name="org.springframework.beans">
     	<level value="WARN" />
     </logger>
-    -->
+    
+    <logger name="com.opensymphony.xwork2">
+    	<level value="WARN" />
+    </logger>
+    
+    <logger name="freemarker">
+    	<level value="WARN" />
+    </logger>
+    
+     <logger name="org.apache.struts2.components">
+    	<level value="WARN" />
+    </logger>
     
    <!-- for all other loggers log only debug and above log messages -->
      <root>

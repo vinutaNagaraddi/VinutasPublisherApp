@@ -94,13 +94,13 @@ public class Author implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Author other = (Author) obj;
-		if (firstName == null) {
-			if (other.firstName != null)
+		if (firstName == null || firstName.isEmpty()) {
+			if (other.firstName != null || !other.firstName.isEmpty())
 				return false;
 		} else if (!firstName.equals(other.firstName))
 			return false;
-		if (lastName == null) {
-			if (other.lastName != null)
+		if (lastName == null || lastName.isEmpty()) {
+			if (other.lastName != null || !lastName.isEmpty())
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;

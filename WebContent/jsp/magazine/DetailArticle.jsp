@@ -1,5 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
 	<table>
 		<tr>	
 			<td>
@@ -17,10 +16,10 @@
 				<s:property value="magazine.articles[#articleStat.index].noOfPages"/>
 			</td>
 		</tr>
-		<s:iterator value="article.authors" status="authorStat"> 
+		<s:iterator value="magazine.articles[#articleStat.index].authors" status="authorStat"> 
 			<tr>	
 				<td>
-					<s:property value="%{getText('author')}"/>
+					<s:property value="%{getText('label.author')}"/>
 					<s:property value="%{#authorStat.count}"/>
 				</td>
 				<td>

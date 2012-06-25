@@ -130,8 +130,8 @@ public class Article implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Article other = (Article) obj;
-		if (title == null) {
-			if (other.title != null)
+		if (title == null || title.isEmpty()) {
+			if (other.title != null || !other.title.isEmpty())
 				return false;
 		} else if (!title.equals(other.title))
 			return false;

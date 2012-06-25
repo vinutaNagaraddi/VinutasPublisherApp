@@ -12,7 +12,6 @@ import com.opensymphony.xwork2.validator.validators.FieldValidatorSupport;
 
 public class UniqueArticleValidator extends FieldValidatorSupport {
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public void validate(Object object) throws ValidationException {
 		// TODO Auto-generated method stub
@@ -20,18 +19,17 @@ public class UniqueArticleValidator extends FieldValidatorSupport {
 		List<Article> articles = (List<Article>) getFieldValue(fieldName, object); 
 		
 		List<Article> articlesCopy  = new ArrayList<Article>();
-		Boolean listCopied = articlesCopy.addAll(articles);
+		articlesCopy.addAll(articles);
 		
-		Iterator<Article> articlesIterator = articlesCopy.iterator();
+		Iterator<Article> articlesIterator = articles.iterator();
 		while(articlesIterator.hasNext()){
 			Article article = articlesIterator.next();
-			String articleTitle = article.getTitle();
-			if(!articleTitle.isEmpty()){
-				articlesCopy.remove(article);
-				if (articlesCopy.contains(article)){
-					this.addFieldError(fieldName,object);
-					return;
-				}
+			articlesCopy.remove(article);
+			
+			//check if there is another article with the same values in the list
+			if (articlesCopy.contains(article)){
+				this.addFieldError(fieldName,object);
+				return;
 			}
 		}
 	}

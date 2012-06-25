@@ -7,4 +7,6 @@
 <validators>
     <validator name="uniqueArticleValidator" 
         class="main.java.com.vinuta.validator.UniqueArticleValidator"/>
+    <validator name="uniqueAuthorPerArticleValidator" 
+        class="main.java.com.vinuta.validator.UniqueAuthorPerArticleValidator"/>
 </validators>

@@ -20,7 +20,7 @@
 			<th><s:property value="%{getText('magazine.id')}"/></th>
 			<th><s:property value="%{getText('magazine.name')}"/></th>
 			<th><s:property value="%{getText('magazine.publishDate')}"/></th>
-			<th><s:property value="%{getText('action')}"/></th>
+			<th><s:property value="%{getText('label.action')}"/></th>
 		</tr>
 		</s:if>
 		<s:iterator value="magazines" status="rowstatus">
@@ -35,15 +35,15 @@
 	    		<s:url action="showDetails" id="showDetails">
 					<s:param name="magazine.id" value="id"/>
 				</s:url>
-				<s:url action="updateMagazine" id="updateMag">
+				<s:url action="showUpdateMagazineJSP" id="showUpdateMagazineJSP">
 					<s:param name="magazine.id" value="id"/>
 				</s:url>
-				<s:url action="deleteMagazine" id="deleteMag">
+				<s:url action="deleteMagazine" id="deleteMagazine">
 					<s:param name="magazine.id" value="id"/>
 				</s:url>
-	    		<s:a href="%{showDetails}"><s:property value="%{getText('details')}"/></s:a>
-	    		<s:a href="%{updateMag}"><s:property value="%{getText('update')}"/></s:a>
-	    		<s:a href="%{deleteMag}"><s:property value="%{getText('delete')}"/></s:a>
+	    		<s:a href="%{showDetails}"><s:property value="%{getText('label.details')}"/></s:a>
+	    		<s:a href="%{showUpdateMagazineJSP}"><s:property value="%{getText('label.update')}"/></s:a>
+	    		<s:a href="%{deleteMagazine}"><s:property value="%{getText('label.delete')}"/></s:a>
 	    	</td>
 	  	</tr>
 		</s:iterator>

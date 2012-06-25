@@ -17,18 +17,22 @@
     	<action name="showAddMagazineJSP" class="magazineAction">
 			<result>/jsp/magazine/AddMagazine.jsp</result>
 		</action>
+		<action name="showUpdateMagazineJSP" class="magazineAction" method="getMagazineById">
+			<result>/jsp/magazine/UpdateMagazine.jsp</result>
+		</action>
 		<action name="addMagazine" class="magazineAction" method="addMagazine">
 			<result name="success" type="redirectAction">listMagazines</result> 
   			<result name="input">/jsp/magazine/AddMagazine.jsp</result> 
 		</action>
 		<action name="updateMagazine" class="magazineAction" method="updateMagazine">
-			<result>/HelloWorldTest.jsp</result>
+			<result name="success" type="redirectAction">listMagazines</result> 
+  			<result name="input">/jsp/magazine/UpdateMagazine.jsp</result> 
 		</action>
 		<action name="showDetails" class="magazineAction" method="detailsMagazine">
   			<result>/jsp/magazine/DetailMagazine.jsp</result> 
 		</action>
 		<action name="deleteMagazine" class="magazineAction" method="deleteMagazine">
-			<result>/HelloWorldTest.jsp</result>
+			<result type="redirectAction">listMagazines</result> 
 		</action>
 		<action name="listMagazines" class="magazineAction" method="listMagazines">
 			<result >/jsp/magazine/ListMagazines.jsp</result>

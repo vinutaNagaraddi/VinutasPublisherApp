@@ -25,8 +25,8 @@ public class MagazineAction extends ActionSupport{
 	private Logger logger = Logger.getLogger(this.getClass());
 	private List<Magazine> magazines;
 	private Magazine magazine;
-	public static Integer NO_OF_ARTICLES = 2;
-	public static Integer NO_OF_AUTHORS = 2;
+	public static Integer NO_OF_ARTICLES = 5;
+	public static Integer NO_OF_AUTHORS = 4;
 	
 	public MagazineService getMagazineServiceImpl() {
 		return magazineServiceImpl;
@@ -63,7 +63,14 @@ public class MagazineAction extends ActionSupport{
 		return SUCCESS;
 	}
 
+	public String getMagazineById(){
+		this.magazine = this.magazineServiceImpl.getMagazine(magazine.getId());
+		return SUCCESS;
+	}
+	
 	public String updateMagazine(){
+		List<Article> articles = getNonEmptyArticles();
+		magazine.setArticles(articles);
 		this.magazineServiceImpl.updateMagazine(magazine);
 		return SUCCESS;
 	}
@@ -96,11 +103,11 @@ public class MagazineAction extends ActionSupport{
 				continue;
 			}
 			
-			//reset authors list with authors that have values entered
+			//reset list with non-empty authors
 			article.setAuthors(getNonEmptyAuthorsList(article));
 			article.setMagazine(magazine);
 			
-			//add the article with values to the new list
+			//add the article with non-empty values to the new list
 			articles.add(article);
 		}
 		return articles;
@@ -119,7 +126,7 @@ public class MagazineAction extends ActionSupport{
 				continue;
 			}
 			
-			//add the author with values to the new list
+			//add the author with non-empty values to the new list
 			authors.add(author);
 		}
 		

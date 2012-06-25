@@ -37,7 +37,7 @@
 			<message>Article : </message>
         </field-validator>
         <field-validator type="uniqueArticleValidator">
-			<message>Article title must be unique for the magazine</message>
+			<message key="error.article.title.unique"/>
         </field-validator>
 	</field>
 </validators>
