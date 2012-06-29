@@ -17,12 +17,12 @@
     	<action name="showAddMagazineJSP" class="magazineAction">
 			<result>/jsp/magazine/AddMagazine.jsp</result>
 		</action>
-		<action name="showUpdateMagazineJSP" class="magazineAction" method="getMagazineById">
-			<result>/jsp/magazine/UpdateMagazine.jsp</result>
-		</action>
 		<action name="addMagazine" class="magazineAction" method="addMagazine">
 			<result name="success" type="redirectAction">listMagazines</result> 
   			<result name="input">/jsp/magazine/AddMagazine.jsp</result> 
+		</action>
+		<action name="showUpdateMagazineJSP" class="magazineAction" method="getMagazineById">
+			<result>/jsp/magazine/UpdateMagazine.jsp</result>
 		</action>
 		<action name="updateMagazine" class="magazineAction" method="updateMagazine">
 			<result name="success" type="redirectAction">listMagazines</result> 
@@ -40,17 +40,48 @@
     </package>
     
      <package name="book" extends="struts-default">
-		<action name="addBook" class="bookAction" method="addBook">
-			<result>/HelloWorldTest.jsp</result>
+     	<action name="showAddComicBookJSP" class="bookAction">
+			<result>/jsp/book/comicBook/AddComicBook.jsp</result>
 		</action>
-		<action name="updateBook" class="bookAction" method="updateBook">
-			<result>/HelloWorldTest.jsp</result>
+		<action name="addComicBook" class="bookAction" method="addComicBook">
+			<result name="success" type="redirectAction">listBooks</result> 
+  			<result name="input">/jsp/book/comicBook/AddComicBook.jsp</result> 
 		</action>
-		<action name="deleteBook" class="bookAction" method="deleteBook">
-			<result>/HelloWorldTest.jsp</result>
+		<action name="showUpdateComicBookJSP" class="bookAction" method="getComicBookById">
+			<result>/jsp/book/comicBook/UpdateComicBook.jsp</result>
+		</action>
+		<action name="updateComicBook" class="bookAction" method="updateComicBook">
+			<result name="success" type="redirectAction">listBooks</result> 
+  			<result name="input">/jsp/book/comicBook/UpdateComicBook.jsp</result> 
+		</action>
+		<action name="showComicBookDetails" class="bookAction" method="getComicBookById">
+  			<result>/jsp/book/comicBook/DetailComicBook.jsp</result> 
+		</action>
+		<action name="deleteComicBook" class="bookAction" method="deleteComicBook">
+  			<result type="redirectAction">listBooks</result>  
+		</action>
+		<action name="showAddNovelJSP" class="bookAction">
+			<result>/jsp/book/novel/AddNovel.jsp</result>
+		</action>
+		<action name="addNovel" class="bookAction" method="addNovel">
+			<result name="success" type="redirectAction">listBooks</result> 
+  			<result name="input">/jsp/book/novel/AddNovel.jsp</result> 
+		</action>
+		<action name="showUpdateNovelJSP" class="bookAction" method="getNovelById">
+			<result>/jsp/book/novel/UpdateNovel.jsp</result>
+		</action>
+		<action name="updateNovel" class="bookAction" method="updateNovel">
+			<result name="success" type="redirectAction">listBooks</result> 
+  			<result name="input">/jsp/book/novel/UpdateNovel.jsp</result> 
+		</action>
+		<action name="showNovelDetails" class="bookAction" method="getNovelById">
+  			<result>/jsp/book/novel/DetailNovel.jsp</result> 
+		</action>
+		<action name="deleteNovel" class="bookAction" method="deleteNovel">
+  			<result type="redirectAction">listBooks</result>  
 		</action>
 		<action name="listBooks" class="bookAction" method="listBooks">
-			<result>/HelloWorldTest.jsp</result>
+			<result >/jsp/book/ListBooks.jsp</result>
 		</action>
     </package>
     

@@ -5,15 +5,14 @@
 <html>
 <title>Hello World!</title>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-<p><a href="<s:url action='magazine/listMagazines'/>">List all Magazine</a></p>
 
-<p><a href="<s:url action='book/addBook'/>">Add Book</a></p>
-<p><a href="<s:url action='book/updateBook'/>">Update Book</a></p>
-<p><a href="<s:url action='book/deleteBook'/>">Delete Book</a></p>
-<p><a href="<s:url action='book/listBooks'/>">List all Book</a></p>
+<s:url action="listMagazines" id="listMagazines"/>
+<s:a href="%{listMagazines}">List all Magazine</s:a>
+
+<s:url action="listBooks" id="listBooks"/>
+<s:a href="%{listBooks}">List all Books</s:a>
 
 <p><a href="<s:url action='office/addOffice'/>">Add Office</a></p>
 <p><a href="<s:url action='office/updateOffice'/>">Update Office</a></p>

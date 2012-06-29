@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional(propagation=Propagation.REQUIRED)
-public class OfficeDAOImpl extends HibernateDAO implements OfficeDAO{
+public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 
 	@Override
 	public void addOffice(Office office) {

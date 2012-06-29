@@ -41,14 +41,14 @@
 	    			<s:property value="#formatedPublishDate"/>
 				</td>
 			</tr>
-			<s:iterator value='magazine.articles' status="articleStat"> 
+			<s:iterator value='novel.authors' status="articleStat"> 
 			<tr>	
 				<td>
-					<s:property value="%{getText('magazine.arictle')}"/>
+					<s:property value="%{getText('label.article')}"/>
 					<s:property value="%{#articleStat.count}"/>
 				</td>
 				<td>
-					<%@ include file="DetailArticle.jsp" %>
+					<%@ include file="../article/DetailArticle.jsp" %>
 				</td>
 			</tr>
 			</s:iterator>

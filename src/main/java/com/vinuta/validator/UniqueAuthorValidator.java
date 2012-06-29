@@ -10,7 +10,7 @@ import main.java.com.vinuta.entity.Author;
 import com.opensymphony.xwork2.validator.ValidationException;
 import com.opensymphony.xwork2.validator.validators.FieldValidatorSupport;
 
-public class UniqueAuthorPerArticleValidator extends FieldValidatorSupport {
+public class UniqueAuthorValidator extends FieldValidatorSupport {
 
 	@Override
 	public void validate(Object object) throws ValidationException {

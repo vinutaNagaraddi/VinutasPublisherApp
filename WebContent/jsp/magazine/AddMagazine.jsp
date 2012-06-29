@@ -51,11 +51,11 @@
 						status="articleStat"> 
 			<tr>	
 				<td>
-					<s:property value="%{getText('magazine.arictle')}"/>
+					<s:property value="%{getText('label.article')}"/>
 					<s:property value="%{#articleStat.count}"/>
 				</td>
 				<td>
-					<%@ include file="Article.jsp" %>
+					<%@ include file="../article/Article.jsp" %>
 				</td>
 			</tr>
 			</s:iterator>

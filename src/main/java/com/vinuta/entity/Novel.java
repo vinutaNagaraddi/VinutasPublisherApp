@@ -1,6 +1,7 @@
 package main.java.com.vinuta.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
@@ -18,8 +19,8 @@ public class Novel extends Book{
 
 	public Novel(){};
 	
-	public Novel(String name, Double price, Date publishDate, Set<Author> author, 
-				String isbn, Set<Chapter> chapters) {
+	public Novel(String name, Double price, Date publishDate, List<Author> author, 
+				String isbn, List<Chapter> chapters) {
 		super(name, price, publishDate, author);
 		this.isbn = isbn;
 		this.chapters = chapters;
@@ -30,7 +31,7 @@ public class Novel extends Book{
 	@OneToMany(mappedBy="novel", orphanRemoval=true)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Cascade(value={CascadeType.ALL})
-	private Set<Chapter> chapters;
+	private List<Chapter> chapters;
 
 	public String getIsbn() {
 		return isbn;
@@ -40,11 +41,11 @@ public class Novel extends Book{
 		this.isbn = isbn;
 	}
 
-	public Set<Chapter> getChapters() {
+	public List<Chapter> getChapters() {
 		return chapters;
 	}
 
-	public void setChapters(Set<Chapter> chapters) {
+	public void setChapters(List<Chapter> chapters) {
 		this.chapters = chapters;
 	}
 

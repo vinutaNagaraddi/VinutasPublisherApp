@@ -37,7 +37,7 @@
 		<field-validator type="visitor">
 			<message>Author : </message>
         </field-validator>
-        <field-validator type="uniqueAuthorPerArticleValidator">
+        <field-validator type="UniqueAuthorValidator">
 			<message key="error.article.authors.unique"/>
         </field-validator>
 	</field>

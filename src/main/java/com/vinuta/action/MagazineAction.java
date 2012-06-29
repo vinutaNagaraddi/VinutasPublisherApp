@@ -1,12 +1,10 @@
 package main.java.com.vinuta.action;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import main.java.com.vinuta.entity.Article;
-import main.java.com.vinuta.entity.Author;
 import main.java.com.vinuta.entity.Magazine;
 import main.java.com.vinuta.service.MagazineService;
 
@@ -14,11 +12,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.opensymphony.xwork2.ActionSupport;
 
 @Scope("prototype")
 @SuppressWarnings("serial")
-public class MagazineAction extends ActionSupport{
+public class MagazineAction extends PublisherAppAction{
 	@Autowired
 	private MagazineService magazineServiceImpl;
 	
@@ -57,8 +54,7 @@ public class MagazineAction extends ActionSupport{
 	}
 	
 	public String addMagazine(){
-		List<Article> articles = getNonEmptyArticles();
-		magazine.setArticles(articles);
+		magazine.setArticles(getNonEmptyArticles(magazine.getArticles()));
 		this.magazineServiceImpl.addMagazine(magazine);
 		return SUCCESS;
 	}
@@ -69,8 +65,7 @@ public class MagazineAction extends ActionSupport{
 	}
 	
 	public String updateMagazine(){
-		List<Article> articles = getNonEmptyArticles();
-		magazine.setArticles(articles);
+		magazine.setArticles(getNonEmptyArticles(magazine.getArticles()));
 		this.magazineServiceImpl.updateMagazine(magazine);
 		return SUCCESS;
 	}
@@ -91,11 +86,11 @@ public class MagazineAction extends ActionSupport{
 	}
 	
 	//get list of articles with non-empty values
-	private List<Article> getNonEmptyArticles() {
+	private List<Article> getNonEmptyArticles(List<Article> allArticles) {
 		List<Article> articles = new ArrayList<Article>();
 		
 		//iterator through empty and non-empty articles
-		Iterator<Article> articlesIterator = magazine.getArticles().iterator();
+		Iterator<Article> articlesIterator = allArticles.iterator();
 		while(articlesIterator.hasNext()){
 			Article article= articlesIterator.next();
 			
@@ -104,33 +99,13 @@ public class MagazineAction extends ActionSupport{
 			}
 			
 			//reset list with non-empty authors
-			article.setAuthors(getNonEmptyAuthorsList(article));
+			article.setAuthors(getNonEmptyAuthorsList(article.getAuthors()));
 			article.setMagazine(magazine);
 			
 			//add the article with non-empty values to the new list
 			articles.add(article);
 		}
 		return articles;
-	}
-	
-	//get list of authors with non-empty values
-	private List<Author> getNonEmptyAuthorsList(Article article){
-		List<Author> authors = new ArrayList<Author>();
-		
-		//iterator through empty and non-empty authors
-		Iterator<Author> authorsIterator = article.getAuthors().iterator();
-		while(authorsIterator.hasNext()){
-			Author author = authorsIterator.next();
-			
-			if(author.getLastName().isEmpty() && author.getFirstName().isEmpty()){
-				continue;
-			}
-			
-			//add the author with non-empty values to the new list
-			authors.add(author);
-		}
-		
-		return authors;
 	}
 	
 }

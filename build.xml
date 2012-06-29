@@ -109,7 +109,7 @@
 		</htools>
 	</target>
 	
-	<target name="archive" depends="build,exportDDL" description="Create binary archive of all files in dist.home">
+	<target name="archive" depends="build" description="Create binary archive of all files in dist.home">
 		
 		<mkdir dir="${dist.home}" />
 		

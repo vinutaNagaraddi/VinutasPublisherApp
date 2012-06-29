@@ -1,9 +1,9 @@
 package main.java.com.vinuta.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -18,6 +18,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Cascade;
@@ -37,7 +38,7 @@ public class Book implements Serializable{
 	@Version
 	private Integer version;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, unique=true)
 	private String name;
 	
 	private Double price;
@@ -50,11 +51,11 @@ public class Book implements Serializable{
 		inverseJoinColumns = { @JoinColumn(name = "author_id") }) 
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@Cascade(value={CascadeType.SAVE_UPDATE})
-	Set<Author> authors = new HashSet<Author>();
+	List<Author> authors = new ArrayList<Author>();
 	
 	public Book(){};
 	
-	public Book(String name, Double price, Date publishDate, Set<Author> authors) {
+	public Book(String name, Double price, Date publishDate, List<Author> authors) {
 		super();
 		this.name = name;
 		this.price = price;
@@ -93,11 +94,11 @@ public class Book implements Serializable{
 		this.publishDate = publishDate;
 	}
 
-	public Set<Author> getAuthors() {
+	public List<Author> getAuthors() {
 		return authors;
 	}
 
-	public void setAuthors(Set<Author> authors) {
+	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
 
@@ -105,6 +106,6 @@ public class Book implements Serializable{
 	public String toString() {
 		return "Book [id=" + id + ", version=" + version + ", name=" + name
 				+ ", price=" + price + ", publishDate=" + publishDate
-				+ ", author=" + authors + "]";
+				+ ", authors=" + authors + "]";
 	}
 }

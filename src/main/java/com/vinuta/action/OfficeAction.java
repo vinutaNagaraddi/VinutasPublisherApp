@@ -2,6 +2,7 @@ package main.java.com.vinuta.action;
 
 import java.util.List;
 
+
 import main.java.com.vinuta.entity.Address;
 import main.java.com.vinuta.entity.Contact;
 import main.java.com.vinuta.entity.Office;
@@ -9,12 +10,11 @@ import main.java.com.vinuta.service.OfficeService;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 
-
-import com.opensymphony.xwork2.ActionSupport;
-
+@Scope("prototype")
 @SuppressWarnings("serial")
-public class OfficeAction extends ActionSupport{
+public class OfficeAction extends PublisherAppAction{
 	
 		private Logger logger = Logger.getLogger(this.getClass());
 		

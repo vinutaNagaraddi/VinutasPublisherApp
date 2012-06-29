@@ -23,7 +23,7 @@
 					<s:property value="%{#authorStat.count}"/>
 				</td>
 				<td>
-					<%@ include file="../author/DetailAuthor.jsp" %>
+					<%@ include file="../author/DetailAuthorForMagazine.jsp" %>
 				</td>
 			</tr>
 		</s:iterator>

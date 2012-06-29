@@ -3,7 +3,6 @@ package main.java.com.vinuta.dao;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 public class HibernateDAO {
 	
@@ -28,7 +27,12 @@ public class HibernateDAO {
 		currentSession().saveOrUpdate(obj);
 	}
 	
+	protected void persist(Object obj){
+		currentSession().persist(obj);
+	}
+	
 	protected void delete(Object obj){
 		currentSession().delete(obj);
 	}
+	
 }

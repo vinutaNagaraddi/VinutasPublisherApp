@@ -1,6 +1,7 @@
 package main.java.com.vinuta.entity;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ public class ComicBook extends Book{
 	public ComicBook(){};
 	
 	public ComicBook(String name, Double price, Date publishDate,
-			Set<Author> authors, byte[] coverImageFile, String fileName) {
+			List<Author> authors, byte[] coverImageFile, String fileName) {
 		super(name, price, publishDate, authors);
 		this.coverImageFile = coverImageFile;
 		this.fileName = fileName;

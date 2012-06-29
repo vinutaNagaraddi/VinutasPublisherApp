@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Cascade;
@@ -18,7 +19,9 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-@Table(name="CHAPTER", schema ="PUBLISHERAPP")
+@Table(name="CHAPTER", schema ="PUBLISHERAPP",
+	uniqueConstraints=@UniqueConstraint(columnNames={"title", "novel_id"})
+)
 public class Chapter implements Serializable {
 
 	
@@ -29,7 +32,7 @@ public class Chapter implements Serializable {
 	@Version
 	private Integer version;
 	
-	@Column(unique=true, nullable=false)
+	@Column(nullable=false)
 	private String title;
 	
 	@Column(name="no_of_pages")
@@ -105,8 +108,8 @@ public class Chapter implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Chapter other = (Chapter) obj;
-		if (title == null) {
-			if (other.title != null)
+		if (title == null || title.isEmpty()) {
+			if (other.title != null || !other.title.isEmpty())
 				return false;
 		} else if (!title.equals(other.title))
 			return false;

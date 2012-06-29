@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Transactional(propagation=Propagation.REQUIRED)
-public class MagazineDAOImpl extends HibernateDAO implements MagazineDAO{
+public class MagazineDAOImpl extends PublisherAppDAO implements MagazineDAO{
 
 	private Logger logger = Logger.getLogger(this.getClass());
 	
@@ -64,37 +64,8 @@ public class MagazineDAOImpl extends HibernateDAO implements MagazineDAO{
 		while(articlesIterator.hasNext()){
 			Article article= articlesIterator.next();
 			//reset the authors for the article
-			article.setAuthors(getAuthorsListWithNewAndExistingAuthors(article.getAuthors()));
+			article.setAuthors(this.getAuthorsListWithNewAndExistingAuthors(article.getAuthors()));
 		}
 	}
 	
-	private List<Author> getAuthorsListWithNewAndExistingAuthors(List<Author> authors){
-		
-		Iterator<Author> authorsIterator = authors.iterator();
-		List<Author> newAuthors = new ArrayList<Author>();
-		
-		//loop through all authors for the article
-		while(authorsIterator.hasNext()){
-			Author author= authorsIterator.next();
-			
-			//get existing author
-			Author persistentAuthor = this.getAuthorByName(author.getLastName(), author.getFirstName());
-			
-			//add existing author to the list if it exists
-			if (persistentAuthor == null){
-				newAuthors.add(author);
-			}else{
-				newAuthors.add(persistentAuthor);
-			}
-		}
-		return newAuthors;
-	}
-	
-	//find an existing author using firstname and lastname
-	private Author getAuthorByName(String lastName, String firstName){
-		Query authorQuery = this.currentSession().createQuery("from Author where lastName=:lastName and firstName=:firstName");
-		authorQuery.setString("lastName", lastName);
-		authorQuery.setString("firstName", firstName);
-		return (Author) authorQuery.uniqueResult();
-	}
 }

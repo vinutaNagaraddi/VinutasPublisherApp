@@ -3,41 +3,47 @@
         "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
 
 <validators>
-	<field name="magazine.name">
+	<field name="novel.name">
 		<field-validator type="requiredstring">
-             <message key="error.required"/>
-        </field-validator>
-	</field>
-	<field name="magazine.publishDate">
-		<field-validator type="required" short-circuit="true">
             <message key="error.required"/>
         </field-validator>
+	</field>
+	<field name="novel.publishDate">
         <field-validator type="date">
   			<param name="min">01/01/1990</param>
- 			 <message key="error.publishDate.minDate"/>
+ 			<message key="error.publishDate.minDate"/>
   		</field-validator>
 	</field>
-	<field name="magazine.price">
+	<field name="novel.price">
 		<field-validator type="double">
 			<param name="minInclusive">0.00</param>
 			<message key="error.price.minAmount"/>
         </field-validator>
 	</field>
-	<field name="magazine.articles">
+	<field name="novel.authors">
 		<field-validator type="fieldexpression" short-circuit="true">
 			<param name="expression"><![CDATA[
-  			   !(magazine.articles[0].title.equals("") 
-  			   		|| magazine.articles[0].authors[0].lastName.equals("")
-  			   			|| magazine.articles[0].authors[0].firstName.equals(""))
+  			   !(novel.authors[0].lastName.equals("") 
+  			   		|| novel.authors[0].firstName.equals(""))
    				]]>
 			</param>
-            <message key="error.magazine.article1.author1.required"/>
+            <message key="error.book.author1.required"/>
 		</field-validator>
 		<field-validator type="visitor">
-			<message>Article : </message>
+			<message>Author : </message>
         </field-validator>
-        <field-validator type="uniqueArticleValidator">
-			<message key="error.article.title.unique"/>
+        <field-validator type="UniqueAuthorValidator">
+			<message key="error.book.authors.unique"/>
+        </field-validator>
+	</field>
+	<field name="novel.chapters[0].title">
+		<field-validator type="requiredstring">
+            <message key="error.required"/>
+        </field-validator>
+	</field>
+	<field name="novel.chapters">
+		<field-validator type="UniqueChapterValidator">
+			<message key="error.novel.chapters.unique"/>
         </field-validator>
 	</field>
 </validators>
