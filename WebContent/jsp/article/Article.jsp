@@ -1,6 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-	<s:hidden name="%{'magazine.articles['+#articleStat.index+'].id'}" />
-	<s:hidden name="%{'magazine.articles['+#articleStat.index+'].version'}"/>
 	<table>
 		<tr>	
 			<s:if test="#articleStat.index==0">

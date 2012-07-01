@@ -30,7 +30,7 @@ public class OfficeServiceImpl implements OfficeService{
 	@Override
 	public void updateOffice(Office office) {
 		// TODO Auto-generated method stub
-		this.updateOffice(office);
+		this.officeDAOImpl.updateOffice(office);
 	}
 
 	@Override
@@ -43,5 +43,11 @@ public class OfficeServiceImpl implements OfficeService{
 	public List<Office> listOffices() {
 		// TODO Auto-generated method stub
 		return this.officeDAOImpl.listOffices();
+	}
+
+	@Override
+	public Office getOffice(Long id) {
+		// TODO Auto-generated method stub
+		return this.officeDAOImpl.getOffice(id);
 	}
 }

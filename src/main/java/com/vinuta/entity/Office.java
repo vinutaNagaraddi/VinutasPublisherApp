@@ -26,36 +26,27 @@ public class Office implements Serializable{
 	
 	@Version
 	private Integer version;
+
+	@Column(name="name", nullable=false, unique=true)
+	private String name;
+	
+	@Column(name="phone_number")
+	private String phoneNumber;
 	
 	@Embedded
 	@AttributeOverrides({
-		@AttributeOverride(name="recipient", column=@Column(name="weekday_contact_recipient")),
-		@AttributeOverride(name="phone", column=@Column(name="weekday_contact_phone")),
-		@AttributeOverride(name="emailAddress", column=@Column(name="weekday_contact_emailAddress"))
+		@AttributeOverride(name="firstName", column=@Column(name="contact_firstName")),
+		@AttributeOverride(name="lastName", column=@Column(name="contact_lastName")),
+		@AttributeOverride(name="phoneNumber", column=@Column(name="contact_phoneNumber")),
+		@AttributeOverride(name="emailAddress", column=@Column(name="contact_emailAddress"))
 	})
-	private Contact weekdayContact;
-	
-	@Embedded
-	@AttributeOverrides({
-		@AttributeOverride(name="recipient", column=@Column(name="weekend_contact_recipient")),
-		@AttributeOverride(name="phone", column=@Column(name="weekend_contact_phone")),
-		@AttributeOverride(name="emailAddress", column=@Column(name="weekend_contact_emailAddress"))
-	})
-	private Contact weekendContact;
+	private Contact contact;
 	
 	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name="address_id")
 	private Address address;
 	
 	public Office(){};
-	
-	public Office(Contact weekdayContact, Contact weekendContact,
-			Address address) {
-		super();
-		this.weekdayContact = weekdayContact;
-		this.weekendContact = weekendContact;
-		this.address = address;
-	}
 	
 	public Long getId() {
 		return id;
@@ -69,18 +60,15 @@ public class Office implements Serializable{
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-	public Contact getWeekdayContact() {
-		return weekdayContact;
+
+	public Contact getContact() {
+		return contact;
 	}
-	public void setWeekdayContact(Contact weekdayContact) {
-		this.weekdayContact = weekdayContact;
+
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
-	public Contact getWeekendContact() {
-		return weekendContact;
-	}
-	public void setWeekendContact(Contact weekendContact) {
-		this.weekendContact = weekendContact;
-	}
+
 	public Address getAddress() {
 		return address;
 	}
@@ -88,10 +76,27 @@ public class Office implements Serializable{
 		this.address = address;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	@Override
 	public String toString() {
-		return "Office [id=" + id + ", version=" + version
-				+ ", weekdayContact=" + weekdayContact + ", weekendContact="
-				+ weekendContact + ", address=" + address + "]";
+		return "Office [id=" + id + ", version=" + version + ", officeName="
+				+ name + ", officePhoneNumber=" + phoneNumber
+				+ ", weekdayContact=" + contact + ", address=" + address
+				+ "]";
 	}
 }

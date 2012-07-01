@@ -1,6 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-	<s:hidden name="%{'novel.chapters['+#chapterStat.index+'].id'}"/>
-	<s:hidden name="%{'novel.chapters['+#chapterStat.index+'].version'}"/>
 	<table>
 		<tr>	
 			<s:if test="#chapterStat.index==0">

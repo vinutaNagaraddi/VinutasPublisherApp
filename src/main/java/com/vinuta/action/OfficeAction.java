@@ -17,6 +17,8 @@ import org.springframework.context.annotation.Scope;
 public class OfficeAction extends PublisherAppAction{
 	
 		private Logger logger = Logger.getLogger(this.getClass());
+		private Office office;
+		private List<Office> offices;
 		
 		@Autowired
 		private OfficeService officeServiceImpl;
@@ -29,32 +31,44 @@ public class OfficeAction extends PublisherAppAction{
 			this.officeServiceImpl = officeServiceImpl;
 		}
 		
+		public Office getOffice() {
+			return office;
+		}
+
+		public void setOffice(Office office) {
+			this.office = office;
+		}
+
+		public List<Office> getOffices() {
+			return offices;
+		}
+
+		public void setOffices(List<Office> offices) {
+			this.offices = offices;
+		}
+
 		public String addOffice(){
-			Contact weekdayContact = new Contact("recipient1", "phone1", "email1");
-			Contact weekendContact = new Contact("recipient2", "phone2", "email2");
-			Address address = new Address("address1", "address2", "city", "tx", "12334");
-			
-			Office office = new Office(weekdayContact, weekendContact, address);
-			
 			this.officeServiceImpl.addOffice(office);
-			
 			return SUCCESS;
 		}
 	
 		public String updateOffice(){
+			this.officeServiceImpl.updateOffice(office);
 			return SUCCESS;
 		}
 		
 		public String deleteOffice(){
-			this.officeServiceImpl.deleteOffice(new Long(1));
+			this.officeServiceImpl.deleteOffice(office.getId());
 			return SUCCESS;
 		}	
 		
+		public String getOfficeById(){
+			this.office = this.officeServiceImpl.getOffice(office.getId());
+			return SUCCESS;
+		}
+		
 		public String listOffices(){
-			List<Office> offices = this.officeServiceImpl.listOffices();
-			for (Office office : offices){
-				logger.debug(office.toString());
-			}
+			this.offices = this.officeServiceImpl.listOffices();
 			return SUCCESS;
 		}
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE validators PUBLIC
+        "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+        "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+
+<validators>
+	<field name="office.name">
+		<field-validator type="requiredstring">
+             <message key="error.required"/>
+        </field-validator>
+	</field>
+	<field name="office.phoneNumber">
+		<field-validator type="regex">
+			 <param name="expression"><![CDATA[
+				 (\d{10})(-\d{2,4})?
+   				]]>
+   			</param>
+            <message key="error.office.phoneNumber.invalid"/>
+        </field-validator>
+	</field>
+	<field name="office.address">
+		<field-validator type="visitor">
+			<message>Address : </message>
+        </field-validator>
+	</field>
+	<field name="office.contact">
+		<field-validator type="visitor">
+			<message>Contact : </message>
+        </field-validator>
+	</field>
+</validators>

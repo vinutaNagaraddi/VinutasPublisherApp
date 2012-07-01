@@ -10,4 +10,5 @@ public interface OfficeDAO {
 	void updateOffice(Office office);
 	void deleteOffice(Long id);
 	List<Office> listOffices();
+	Office getOffice(Long id);
 }

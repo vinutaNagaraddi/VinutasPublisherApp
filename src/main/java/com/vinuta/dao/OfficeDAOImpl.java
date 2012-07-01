@@ -3,6 +3,7 @@ package main.java.com.vinuta.dao;
 import java.util.List;
 
 import main.java.com.vinuta.dao.HibernateDAO;
+import main.java.com.vinuta.entity.Magazine;
 import main.java.com.vinuta.entity.Office;
 
 import org.hibernate.Query;
@@ -40,5 +41,10 @@ public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 		return officQuery.list();
 	}
 
-
+	@Override
+	public Office getOffice(Long id) {
+		// TODO Auto-generated method stub
+		Office office = (Office) this.currentSession().get(Office.class, id);
+		return office;
+	}
 }

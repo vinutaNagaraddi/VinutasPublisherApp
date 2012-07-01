@@ -28,7 +28,7 @@
 			<result name="success" type="redirectAction">listMagazines</result> 
   			<result name="input">/jsp/magazine/UpdateMagazine.jsp</result> 
 		</action>
-		<action name="showDetails" class="magazineAction" method="detailsMagazine">
+		<action name="showDetails" class="magazineAction" method="getMagazineById">
   			<result>/jsp/magazine/DetailMagazine.jsp</result> 
 		</action>
 		<action name="deleteMagazine" class="magazineAction" method="deleteMagazine">
@@ -86,17 +86,28 @@
     </package>
     
      <package name="office" extends="struts-default">
+     	<action name="showAddOfficeJSP" class="officeAction">
+			<result>/jsp/office/AddOffice.jsp</result>
+		</action>
 		<action name="addOffice" class="officeAction" method="addOffice">
-			<result>/HelloWorldTest.jsp</result>
+			<result name="success" type="redirectAction">listOffices</result> 
+			<result name="input">/jsp/office/AddOffice.jsp</result>
+		</action>
+		<action name="showUpdateOfficeJSP" class="officeAction" method="getOfficeById">
+			<result>/jsp/office/UpdateOffice.jsp</result>
 		</action>
 		<action name="updateOffice" class="officeAction" method="updateOffice">
-			<result>/HelloWorldTest.jsp</result>
+			<result name="success" type="redirectAction">listOffices</result> 
+  			<result name="input">/jsp/office/UpdateOffice.jsp</result> 
+		</action>
+		<action name="showDetails" class="officeAction" method="getOfficeById">
+  			<result>/jsp/office/DetailOffice.jsp</result> 
 		</action>
 		<action name="deleteOffice" class="officeAction" method="deleteOffice">
-			<result>/HelloWorldTest.jsp</result>
+			<result name="success" type="redirectAction">listOffices</result>
 		</action>
 		<action name="listOffices" class="officeAction" method="listOffices">
-			<result>/HelloWorldTest.jsp</result>
+			<result >/jsp/office/ListOffices.jsp</result>
 		</action>
     </package>
     

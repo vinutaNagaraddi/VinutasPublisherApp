@@ -70,11 +70,6 @@ public class MagazineAction extends PublisherAppAction{
 		return SUCCESS;
 	}
 	
-	public String detailsMagazine(){
-		magazine = this.magazineServiceImpl.getMagazine(this.magazine.getId());
-		return SUCCESS;
-	}
-	
 	public String deleteMagazine(){
 		this.magazineServiceImpl.deleteMagazine(this.magazine.getId());
 		return SUCCESS;

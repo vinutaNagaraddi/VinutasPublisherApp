@@ -10,57 +10,10 @@
 	<s:form theme="simple">
 		<s:hidden name="magazine.id" />
 		<s:hidden name="magazine.version" />
+		<s:hidden name="%{'magazine.articles['+#articleStat.index+'].id'}" />
+		<s:hidden name="%{'magazine.articles['+#articleStat.index+'].version'}"/>
 		<table>
-			<tr>	
-				<td class="requiredField">
-					<s:property value="%{getText('magazine.name')}"/>
-				</td>
-				<td>
-					<s:textfield key="magazine.name"/>
-				</td>
-			</tr>
-			<tr>	
-				<td>
-					<s:property value="%{getText('magazine.price')}"/>
-				</td>
-				<td>
-					<s:textfield  key="magazine.price" />
-				</td>
-			</tr>
-			<tr>	
-				<td>
-					<s:property value="%{getText('magazine.avOnline')}"/>
-				</td>
-				<td>
-					<s:checkbox key="magazine.availableOnline"/>
-				</td>
-			</tr>
-			<tr>	
-				<td class="requiredField">
-					<s:property value="%{getText('magazine.publishDate')}"/>
-				</td>
-				<td>
-					<s:date name="magazine.publishDate" format="MM/dd/yyyy" var="myDateVar"/>
-					<s:if test="%{#myDateVar==null}">
-						<s:textfield key="magazine.publishDate"/>
-					</s:if>
-					<s:else>
-						<s:textfield key="magazine.publishDate" value="%{#myDateVar}"/>
-					</s:else>	
-				</td>
-			</tr>
-			<s:iterator value='new int[@main.java.com.vinuta.action.MagazineAction@NO_OF_ARTICLES]' 
-						status="articleStat"> 
-			<tr>	
-				<td>
-					<s:property value="%{getText('label.article')}"/>
-					<s:property value="%{#articleStat.count}"/>
-				</td>
-				<td>
-					<%@ include file="../article/Article.jsp" %>
-				</td>
-			</tr>
-			</s:iterator>
+			<%@ include file="Magazine.jsp" %>
 			<tr>
 				<td colspan="2"  align="center">
 					<s:submit action="updateMagazine" namespace="magazine" key="label.update"/>

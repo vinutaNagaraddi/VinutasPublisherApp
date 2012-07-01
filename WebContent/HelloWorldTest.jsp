@@ -10,15 +10,12 @@
 
 <s:url action="listMagazines" id="listMagazines"/>
 <s:a href="%{listMagazines}">List all Magazine</s:a>
-
+<p/>
 <s:url action="listBooks" id="listBooks"/>
 <s:a href="%{listBooks}">List all Books</s:a>
-
-<p><a href="<s:url action='office/addOffice'/>">Add Office</a></p>
-<p><a href="<s:url action='office/updateOffice'/>">Update Office</a></p>
-<p><a href="<s:url action='office/deleteOffice'/>">Delete Office</a></p>
-<p><a href="<s:url action='office/listOffices'/>">List all Office</a></p>
-
+<p/>
+<s:url action="listOffices" id="listOffices"/>
+<s:a href="%{listOffices}">List all Offices</s:a>
 
 </body>
 </html>
