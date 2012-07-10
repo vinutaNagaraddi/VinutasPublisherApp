@@ -9,6 +9,7 @@ import main.java.com.vinuta.entity.Magazine;
 import main.java.com.vinuta.service.MagazineService;
 
 import org.apache.log4j.Logger;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
@@ -55,7 +56,13 @@ public class MagazineAction extends PublisherAppAction{
 	
 	public String addMagazine(){
 		magazine.setArticles(getNonEmptyArticles(magazine.getArticles()));
-		this.magazineServiceImpl.addMagazine(magazine);
+		try{
+			this.magazineServiceImpl.addMagazine(magazine);
+		}
+		catch(ConstraintViolationException ue){
+			this.addActionError(this.getText("unique.magazine.exception"));
+			return INPUT;
+		}
 		return SUCCESS;
 	}
 

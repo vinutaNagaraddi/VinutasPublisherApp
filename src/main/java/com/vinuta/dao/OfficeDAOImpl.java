@@ -17,13 +17,13 @@ public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 	@Override
 	public void addOffice(Office office) {
 		// TODO Auto-generated method stub
-		this.saveOrUpdate(office);
+		this.save(office);
 	}
 
 	@Override
 	public void updateOffice(Office office) {
 		// TODO Auto-generated method stub
-		this.saveOrUpdate(office);
+		this.merge(office);
 	}
 
 	@Override
@@ -41,7 +41,9 @@ public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 		return officQuery.list();
 	}
 
+	
 	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public Office getOffice(Long id) {
 		// TODO Auto-generated method stub
 		Office office = (Office) this.currentSession().get(Office.class, id);

@@ -1,15 +1,14 @@
 package main.java.com.vinuta.dao;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import main.java.com.vinuta.entity.Article;
-import main.java.com.vinuta.entity.Author;
 import main.java.com.vinuta.entity.Magazine;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,17 +18,17 @@ public class MagazineDAOImpl extends PublisherAppDAO implements MagazineDAO{
 	private Logger logger = Logger.getLogger(this.getClass());
 	
 	@Override
-	public void addMagazine(Magazine magazine) {
+	public void addMagazine(Magazine magazine){
 		// TODO Auto-generated method stub
 		resetAuthorsListForAritlces(magazine);
-		this.saveOrUpdate(magazine);
+		this.save(magazine);
 	}
 
 	@Override
 	public void updateMagazine(Magazine magazine) {
 		// TODO Auto-generated method stub
 		resetAuthorsListForAritlces(magazine);
-		this.saveOrUpdate(magazine);
+		this.merge(magazine);
 	}
 
 	@Override
@@ -42,11 +41,13 @@ public class MagazineDAOImpl extends PublisherAppDAO implements MagazineDAO{
 	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public List<Magazine> listMagazines() {
 		// TODO Auto-generated method stub
-		Query magazineQuery = this.currentSession().createQuery("from Magazine");
+		Query magazineQuery = this.currentSession().createQuery(" from Magazine mag" +
+				" order by mag.name asc, mag.publishDate asc");
 		return magazineQuery.list();
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public Magazine getMagazine(Long id) {
 		// TODO Auto-generated method stub
 		return getMagazineById(id);

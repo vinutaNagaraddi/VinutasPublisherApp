@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Update Magazine</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<h3><s:property value="%{getText('updateMazine.heading')}"/></h3>
@@ -10,8 +10,6 @@
 	<s:form theme="simple">
 		<s:hidden name="magazine.id" />
 		<s:hidden name="magazine.version" />
-		<s:hidden name="%{'magazine.articles['+#articleStat.index+'].id'}" />
-		<s:hidden name="%{'magazine.articles['+#articleStat.index+'].version'}"/>
 		<table>
 			<%@ include file="Magazine.jsp" %>
 			<tr>

@@ -20,18 +20,19 @@
 		</field-validator>
 		<field-validator type="fieldexpression">
 		 	<param name="expression"><![CDATA[
- 		    	!((title.equals("") && !authors[0].lastName.equals("")))
+ 		    	!(  (title.equals("") && !authors[0].lastName.equals("")) ||  
+ 		    		( title.equals("") && !authors[0].firstName.equals("") )	
+ 		    	)
    				]]>
    			</param>
-  			<message key="error.article.author1.lastName.title.required"/>
+  			<message key="error.article.author1.title.required"/>
 		</field-validator>
-		<field-validator type="fieldexpression">
-		 	<param name="expression"><![CDATA[
-    			!((title.equals("") && !authors[0].firstName.equals("")))
-   				]]>
-   			</param>
-  			<message key="error.article.author1.firstName.title.required"/>
-		</field-validator>
+	</field>
+	<field name="noOfPages">
+		<field-validator type="int">
+			<param name="min">1</param>
+            <message key="error.article.noOfpages"/>
+        </field-validator>
 	</field>
 	<field name="authors">
 		<field-validator type="visitor">

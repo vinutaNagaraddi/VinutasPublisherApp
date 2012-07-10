@@ -13,13 +13,13 @@
             <message key="error.required"/>
         </field-validator>
         <field-validator type="date">
-  			<param name="min">01/01/1990</param>
+  			<param name="min">01/01/2000</param>
  			 <message key="error.publishDate.minDate"/>
   		</field-validator>
 	</field>
 	<field name="magazine.price">
 		<field-validator type="double">
-			<param name="minInclusive">0.00</param>
+			<param name="minInclusive">0.01</param>
 			<message key="error.price.minAmount"/>
         </field-validator>
 	</field>

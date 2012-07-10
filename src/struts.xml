@@ -13,7 +13,7 @@
 		</action>
     </package>
     
-    <package name="magazine" extends="struts-default">
+    <package name="magazine" namespace="/magazine" extends="struts-default">
     	<action name="showAddMagazineJSP" class="magazineAction">
 			<result>/jsp/magazine/AddMagazine.jsp</result>
 		</action>
@@ -39,7 +39,7 @@
 		</action>
     </package>
     
-     <package name="book" extends="struts-default">
+     <package name="book" namespace="/book" extends="struts-default">
      	<action name="showAddComicBookJSP" class="bookAction">
 			<result>/jsp/book/comicBook/AddComicBook.jsp</result>
 		</action>
@@ -85,7 +85,7 @@
 		</action>
     </package>
     
-     <package name="office" extends="struts-default">
+     <package name="office" namespace="/office" extends="struts-default">
      	<action name="showAddOfficeJSP" class="officeAction">
 			<result>/jsp/office/AddOffice.jsp</result>
 		</action>

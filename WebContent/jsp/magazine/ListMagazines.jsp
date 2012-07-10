@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>List all Magazines</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<s:form theme="simple">
@@ -30,7 +30,7 @@
 		    		<s:url action="showDetails" id="showDetails">
 						<s:param name="magazine.id" value="id"/>
 					</s:url>
-					<s:url action="showUpdateMagazineJSP" id="showUpdateMagazineJSP">
+					<s:url action="showUpdateMagazineJSP"   id="showUpdateMagazineJSP">
 						<s:param name="magazine.id" value="id"/>
 					</s:url>
 					<s:url action="deleteMagazine" id="deleteMagazine">

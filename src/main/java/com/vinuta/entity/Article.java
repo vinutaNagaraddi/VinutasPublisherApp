@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,16 +14,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Index;
+import org.hibernate.annotations.IndexColumn;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.OrderBy;
+import org.hibernate.annotations.Sort;
+import org.hibernate.annotations.SortType;
 
 @Entity
 @Table(name="ARTICLE", schema ="PUBLISHERAPP",
@@ -38,8 +42,8 @@ public class Article implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="magazine_id", nullable=false)
-	@LazyCollection(LazyCollectionOption.FALSE)
 	@Cascade(value={CascadeType.SAVE_UPDATE})
+	@LazyCollection(LazyCollectionOption.FALSE) 
 	private Magazine magazine;
 	
 	@Column(nullable=false)
@@ -51,20 +55,12 @@ public class Article implements Serializable {
 	@ManyToMany
 	@JoinTable(name = "ARTICLE_AUTHOR", schema = "PUBLISHERAPP", joinColumns = { @JoinColumn(name = "article_id") }, 
 		inverseJoinColumns = { @JoinColumn(name = "author_id") }) 
-	@LazyCollection(LazyCollectionOption.FALSE)
 	@Cascade(value={CascadeType.SAVE_UPDATE})
+	@LazyCollection(LazyCollectionOption.FALSE) 
 	private List<Author> authors;
 	
 	public Article(){};
 	
-	public Article(String title, Integer noOfPages,
-			List<Author> authors) {
-		super();
-		this.title = title;
-		this.noOfPages = noOfPages;
-		this.authors = authors;
-	}
-
 	public Long getId() {
 		return id;
 	}

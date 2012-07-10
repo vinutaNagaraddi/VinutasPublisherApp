@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,11 +14,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.persistence.CascadeType;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.OrderBy;
+
 
 @Entity
 @Table(name="MAGAZINE", schema ="PUBLISHERAPP",
@@ -43,9 +43,9 @@ public class Magazine implements Serializable{
 	@Column(name="publish_date", nullable=false)
 	private Date publishDate;
 	
-	@OneToMany(mappedBy="magazine",orphanRemoval=true)
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@Cascade(value={CascadeType.ALL})
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, 
+			mappedBy="magazine", orphanRemoval=true)
+	@OrderBy(clause="title asc")
 	private List<Article> articles;
 	
 	public Magazine(){};

@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Magazine Details</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<h3><s:property value="%{getText('detailMagazine.heading')}"/></h3>
@@ -41,7 +41,7 @@
 	    			<s:property value="#formatedPublishDate"/>
 				</td>
 			</tr>
-			<s:iterator value='novel.authors' status="articleStat"> 
+			<s:iterator value='magazine.articles' status="articleStat"> 
 			<tr>	
 				<td>
 					<s:property value="%{getText('label.article')}"/>

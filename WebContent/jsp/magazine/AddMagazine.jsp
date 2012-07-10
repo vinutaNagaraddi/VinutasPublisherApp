@@ -2,11 +2,12 @@
 <html>
 <head>
 <title>Add Magazine</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<h3><s:property value="%{getText('addMazine.heading')}"/></h3>
 	<s:fielderror/>
+	<s:actionerror/>
 	<s:form theme="simple">
 		<table>
 			<%@ include file="Magazine.jsp" %>

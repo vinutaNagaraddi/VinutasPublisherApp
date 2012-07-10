@@ -19,14 +19,14 @@ public class BookDAOImpl extends PublisherAppDAO implements BookDAO{
 	public void addBook(Book book) {
 		// TODO Auto-generated method stub
 		book.setAuthors(this.getAuthorsListWithNewAndExistingAuthors(book.getAuthors()));
-		this.saveOrUpdate(book);
+		this.save(book);
 	}
 
 	@Override
 	public void updateBook(Book book) {
 		// TODO Auto-generated method stub
 		book.setAuthors(this.getAuthorsListWithNewAndExistingAuthors(book.getAuthors()));
-		this.saveOrUpdate(book);
+		this.merge(book);
 	}
 
 	@Override
@@ -45,6 +45,7 @@ public class BookDAOImpl extends PublisherAppDAO implements BookDAO{
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public Book getBook(Long id) {
 		// TODO Auto-generated method stub
 		return getBookById(id);

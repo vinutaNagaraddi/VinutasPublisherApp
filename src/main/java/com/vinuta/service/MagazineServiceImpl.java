@@ -21,7 +21,7 @@ public class MagazineServiceImpl implements MagazineService{
 	}
 
 	@Override
-	public void addMagazine(Magazine magazine) {
+	public void addMagazine(Magazine magazine){
 		// TODO Auto-generated method stub
 		this.magazineDAOImpl.addMagazine(magazine);
 	}

@@ -23,8 +23,12 @@ public class HibernateDAO {
 		return this.sessionFactory.getCurrentSession();
 	}
 	
-	protected void saveOrUpdate(Object obj){
-		currentSession().saveOrUpdate(obj);
+	protected void save(Object obj){
+		currentSession().save(obj);
+	}
+	
+	protected void merge(Object obj){
+		currentSession().merge(obj);
 	}
 	
 	protected void persist(Object obj){
