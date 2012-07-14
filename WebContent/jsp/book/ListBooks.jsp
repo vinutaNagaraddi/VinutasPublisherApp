@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>List all Books</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<s:form theme="simple">
@@ -23,8 +23,9 @@
 		    	<td>Comic Book</td>
 		    	<td><s:property value="name"/></td>
 		    	<td>
-		    		<s:date name="publishDate" var="formatedPublishDate" format = "MM/dd/yyyy"/>
-		    		<s:property value="#formatedPublishDate"/>
+		    		<s:set name="#formatedComicBookPublishDate" value=""/>
+					<s:date name="publishDate" var="#formatedComicBookPublishDate" format = "MM/dd/yyyy"/>
+		    		<s:property value="#formatedComicBookPublishDate"/>
 		    	</td>
 		    	<td>
 		    		<s:url action="showComicBookDetails" id="showComicBookDetails">
@@ -47,8 +48,9 @@
 		    	<td>Novel</td>
 		    	<td><s:property value="name"/></td>
 		    	<td>
-		    		<s:date name="publishDate" var="formatedPublishDate" format = "MM/dd/yyyy"/>
-		    		<s:property value="#formatedPublishDate"/>
+		    		<s:set name="#formatedNovelPublishDate" value=""/>
+					<s:date name="publishDate" var="#formatedNovelPublishDate" format = "MM/dd/yyyy"/>
+		    		<s:property value="#formatedNovelPublishDate"/>
 		    	</td>
 		    	<td>
 		    		<s:url action="showNovelDetails" id="showNovelDetails">

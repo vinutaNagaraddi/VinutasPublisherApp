@@ -10,8 +10,10 @@ import main.java.com.vinuta.entity.Novel;
 import main.java.com.vinuta.service.BookService;
 
 import org.apache.log4j.Logger;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DataIntegrityViolationException;
 
 
 
@@ -74,13 +76,25 @@ public class BookAction extends PublisherAppAction{
 
 	public String addComicBook(){
 		comicBook.setAuthors(this.getNonEmptyAuthorsList(comicBook.getAuthors()));
-		this.bookServiceImpl.addBook(comicBook);
+		try{
+			this.bookServiceImpl.addBook(comicBook);
+		}
+		catch(ConstraintViolationException ue){
+			this.addActionError(this.getText("unique.comicBook.exception"));
+			return INPUT;
+		}
 		return SUCCESS;
 	}
 	
 	public String updateComicBook(){
 		comicBook.setAuthors(this.getNonEmptyAuthorsList(comicBook.getAuthors()));
-		this.bookServiceImpl.updateBook(comicBook);
+		try{
+			this.bookServiceImpl.updateBook(comicBook);
+		}
+		catch(DataIntegrityViolationException ue){
+			this.addActionError(this.getText("unique.comicBook.exception"));
+			return INPUT;
+		}
 		return SUCCESS;
 	}
 	
@@ -97,14 +111,26 @@ public class BookAction extends PublisherAppAction{
 	public String addNovel(){
 		novel.setAuthors(this.getNonEmptyAuthorsList(novel.getAuthors()));
 		novel.setChapters(this.getNonEmptyChaptersList(novel.getChapters()));
-		this.bookServiceImpl.addBook(novel);
+		try{
+			this.bookServiceImpl.addBook(novel);
+		}
+		catch(ConstraintViolationException ue){
+			this.addActionError(this.getText("unique.novel.exception"));
+			return INPUT;
+		}
 		return SUCCESS;
 	}
 	
 	public String updateNovel(){
 		novel.setAuthors(this.getNonEmptyAuthorsList(novel.getAuthors()));
 		novel.setChapters(this.getNonEmptyChaptersList(novel.getChapters()));
-		this.bookServiceImpl.updateBook(novel);
+		try{
+			this.bookServiceImpl.updateBook(novel);
+		}
+		catch(DataIntegrityViolationException ue){
+			this.addActionError(this.getText("unique.novel.exception"));
+			return INPUT;
+		}
 		return SUCCESS;
 	}
 	

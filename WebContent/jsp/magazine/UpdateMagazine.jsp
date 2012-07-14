@@ -6,6 +6,7 @@
 </head>
 <body>
 	<h3><s:property value="%{getText('updateMazine.heading')}"/></h3>
+	<s:actionerror/>
 	<s:fielderror/>
 	<s:form theme="simple">
 		<s:hidden name="magazine.id" />

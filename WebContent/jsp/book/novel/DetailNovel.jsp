@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Detail Novel</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<h3><s:property value="%{getText('detailNovel.heading')}"/></h3>

@@ -1,12 +1,9 @@
 package main.java.com.vinuta.entity;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 
 @Entity
 @DiscriminatorValue("COMICBOOK")
@@ -14,18 +11,23 @@ public class ComicBook extends Book{
 	
 	public ComicBook(){};
 	
-	public ComicBook(String name, Double price, Date publishDate,
-			List<Author> authors, byte[] coverImageFile, String fileName) {
-		super(name, price, publishDate, authors);
-		this.coverImageFile = coverImageFile;
-		this.fileName = fileName;
-	}
-
+	@Column(name="no_of_pages")
+	private Integer noOfPages;
+	
 	@Column(name="file_Name")
 	private String fileName;
 	
 	@Column(name="cover_image_file")
 	private byte[] coverImageFile;
+
+	
+	public Integer getNoOfPages() {
+		return noOfPages;
+	}
+
+	public void setNoOfPages(Integer noOfPages) {
+		this.noOfPages = noOfPages;
+	}
 
 	public String getFileName() {
 		return fileName;
@@ -45,7 +47,8 @@ public class ComicBook extends Book{
 
 	@Override
 	public String toString() {
-		return "ComicBook [fileName=" + fileName + ", toString()="
-				+ super.toString() + "]";
+		return "ComicBook [noOfPages=" + noOfPages + ", fileName=" + fileName
+				+ "]";
 	}
+
 }

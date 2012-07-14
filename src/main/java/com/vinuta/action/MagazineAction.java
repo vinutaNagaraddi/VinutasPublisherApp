@@ -12,6 +12,7 @@ import org.apache.log4j.Logger;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.dao.DataIntegrityViolationException;
 
 
 @Scope("prototype")
@@ -73,7 +74,14 @@ public class MagazineAction extends PublisherAppAction{
 	
 	public String updateMagazine(){
 		magazine.setArticles(getNonEmptyArticles(magazine.getArticles()));
-		this.magazineServiceImpl.updateMagazine(magazine);
+		try{
+			this.magazineServiceImpl.updateMagazine(magazine);
+		}
+		catch(DataIntegrityViolationException ue){
+			this.addActionError(this.getText("unique.magazine.exception"));
+			return INPUT;
+		}
+		
 		return SUCCESS;
 	}
 	

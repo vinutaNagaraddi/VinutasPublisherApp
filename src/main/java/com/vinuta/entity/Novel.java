@@ -51,8 +51,8 @@ public class Novel extends Book{
 
 	@Override
 	public String toString() {
-		return "Novel [isbn=" + isbn + ", chapters=" + chapters
-				+ ", toString()=" + super.toString() + "]";
+		return "Novel [" + super.toString() + " isbn=" + isbn + ", chapters=" + chapters + "]";
 	}
+
 	
 }

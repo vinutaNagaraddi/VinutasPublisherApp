@@ -54,14 +54,16 @@ public class BookDAOImpl extends PublisherAppDAO implements BookDAO{
 	@Override
 	public List<ComicBook> listComicBooks() {
 		// TODO Auto-generated method stub
-		Query bookQuery = this.currentSession().createQuery("from ComicBook");
+		Query bookQuery = this.currentSession().createQuery("from ComicBook cb" +
+				" order by cb.name asc, cb.publishDate asc ");
 		return  bookQuery.list();
 	}
 
 	@Override
 	public List<Novel> listNovels() {
 		// TODO Auto-generated method stub
-		Query bookQuery = this.currentSession().createQuery("from Novel");
+		Query bookQuery = this.currentSession().createQuery("from Novel n" +
+				" order by n.name asc, n.publishDate asc");
 		return bookQuery.list();
 	}
 	

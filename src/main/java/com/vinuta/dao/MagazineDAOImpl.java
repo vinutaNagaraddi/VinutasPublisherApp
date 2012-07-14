@@ -8,7 +8,6 @@ import main.java.com.vinuta.entity.Magazine;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 

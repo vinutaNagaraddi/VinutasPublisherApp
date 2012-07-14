@@ -2,10 +2,11 @@
 <html>
 <head>
 <title>Update Comic Book</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<h3><s:property value="%{getText('updateComicBook.heading')}"/></h3>
+	<s:actionerror/>
 	<s:fielderror/>
 	<s:form theme="simple">
 		<s:hidden name="comicBook.id" />
