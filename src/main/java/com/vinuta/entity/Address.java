@@ -24,9 +24,11 @@ public class Address {
 	private String address1;
 	
 	private String address2;
+	
+	@Column(nullable=false)
 	private String city;
 	
-	@Column(length=2)
+	@Column(length=2, nullable=false)
 	private String state;
 	
 	@Column(name="zip_code")

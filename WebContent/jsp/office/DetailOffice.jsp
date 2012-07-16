@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Office Details</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<h3><s:property value="%{getText('detailOffice.heading')}"/></h3>

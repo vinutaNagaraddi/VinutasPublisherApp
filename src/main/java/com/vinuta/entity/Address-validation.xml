@@ -8,6 +8,16 @@
              <message key="error.required"/>
         </field-validator>
 	</field>
+	<field name="address.city">
+		<field-validator type="requiredstring">
+             <message key="error.required"/>
+        </field-validator>
+	</field>
+	<field name="address.state">
+		<field-validator type="requiredstring">
+             <message key="error.required"/>
+        </field-validator>
+	</field>
 	<field name="address.zipCode">
 		<field-validator type="regex">
 			 <param name="expression"><![CDATA[

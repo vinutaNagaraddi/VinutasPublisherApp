@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>List all Offices</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<s:form theme="simple">

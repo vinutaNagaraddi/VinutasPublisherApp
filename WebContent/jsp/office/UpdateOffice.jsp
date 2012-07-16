@@ -2,15 +2,17 @@
 <html>
 <head>
 <title>Update Publishing Office Branch</title>
-<style type="text/css">@import url(css/main.css);</style>
+<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
 	<h3><s:property value="%{getText('updateOffice.heading')}"/></h3>
+	<s:actionerror/>
 	<s:fielderror/>
 	<s:form theme="simple">
 		<s:hidden name="office.id" />
 		<s:hidden name="office.version" />
 		<s:hidden name="office.address.id" />
+		<s:hidden name="office.address.version" />
 		<table>
 			<%@ include file="Office.jsp" %>
 			<tr>

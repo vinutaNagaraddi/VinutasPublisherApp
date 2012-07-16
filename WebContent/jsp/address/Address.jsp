@@ -18,7 +18,7 @@
 			</td>
 		</tr>
 		<tr>	
-			<td>
+			<td class="requiredField">
 				<s:property value="%{getText('address.city')}"/>
 			</td>
 			<td>
@@ -26,11 +26,12 @@
 			</td>
 		</tr>
 		<tr>	
-			<td>
+			<td class="requiredField">
 				<s:property value="%{getText('address.state')}"/>
 			</td>
 			<td>
-				<s:textfield key="office.address.state"/>
+				<s:select  name="office.address.state" 
+				  emptyOption="true" list="usStates" />
 			</td>
 		</tr>
 		<tr>	
