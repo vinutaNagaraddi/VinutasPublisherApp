@@ -34,6 +34,14 @@
 	    			<s:property value="#formatedPublishDate"/>
 				</td>
 			</tr>
+			<tr>	
+				<td>
+					<s:property value="%{getText('comicBook.noOfPages')}"/>
+				</td>
+				<td>
+					<s:property value="comicBook.noOfPages" />
+				</td>
+			</tr>
 			<s:iterator value='comicBook.authors' status="authorStat"> 
 				<tr>	
 					<td>

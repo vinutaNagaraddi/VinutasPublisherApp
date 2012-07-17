@@ -1,8 +1,6 @@
 package main.java.com.vinuta.entity;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -19,13 +17,6 @@ public class Novel extends Book{
 
 	public Novel(){};
 	
-	public Novel(String name, Double price, Date publishDate, List<Author> author, 
-				String isbn, List<Chapter> chapters) {
-		super(name, price, publishDate, author);
-		this.isbn = isbn;
-		this.chapters = chapters;
-	}
-
 	private String isbn;
 	
 	@OneToMany(mappedBy="novel", orphanRemoval=true)

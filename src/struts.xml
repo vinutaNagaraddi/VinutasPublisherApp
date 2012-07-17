@@ -34,6 +34,12 @@
 		<action name="deleteMagazine" class="magazineAction" method="deleteMagazine">
 			<result type="redirectAction">listMagazines</result> 
 		</action>
+		<action name="showSearchMagazineJSP" class="magazineAction">
+			<result>/jsp/magazine/SearchMagazines.jsp</result> 
+		</action>
+    	<action name="searchMagazines" class="magazineAction" method="searchMagazines">
+			<result>/jsp/magazine/SearchMagazines.jsp</result>
+		</action>
 		<action name="listMagazines" class="magazineAction" method="listMagazines">
 			<result >/jsp/magazine/ListMagazines.jsp</result>
 		</action>
@@ -60,6 +66,12 @@
 		<action name="deleteComicBook" class="bookAction" method="deleteComicBook">
   			<result type="redirectAction">listBooks</result>  
 		</action>
+		<action name="showSearchComicBooksJSP" class="bookAction">
+			<result>/jsp/book/comicBook/SearchComicBooks.jsp</result>
+		</action>
+    	<action name="searchComicBooks" class="bookAction" method="searchComicBooks">
+			<result>/jsp/book/comicBook/SearchComicBooks.jsp</result>
+		</action>
 		<action name="showAddNovelJSP" class="bookAction">
 			<result>/jsp/book/novel/AddNovel.jsp</result>
 		</action>
@@ -79,6 +91,12 @@
 		</action>
 		<action name="deleteNovel" class="bookAction" method="deleteNovel">
   			<result type="redirectAction">listBooks</result>  
+		</action>
+		<action name="showSearchNovelJSP" class="bookAction">
+			<result>/jsp/book/novel/SearchNovels.jsp</result>
+		</action>
+    	<action name="searchNovels" class="bookAction" method="searchNovels">
+			<result>/jsp/book/novel/SearchNovels.jsp</result>
 		</action>
 		<action name="listBooks" class="bookAction" method="listBooks">
 			<result >/jsp/book/ListBooks.jsp</result>

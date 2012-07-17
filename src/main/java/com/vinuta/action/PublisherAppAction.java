@@ -3,6 +3,8 @@ package main.java.com.vinuta.action;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import org.springframework.context.annotation.Scope;
 
@@ -15,6 +17,20 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class PublisherAppAction  extends ActionSupport{
 	
+	private static Map<String,String> symbols = new TreeMap<String,String>();
+	
+	
+	static{
+		symbols.put("greaterThanOrEqual", "Greater Than or Equal");
+		symbols.put("lessThanOrEqual", "Less Than or Equal");
+	}
+	
+	
+	public Map<String, String> getSymbols() {
+		return symbols;
+	}
+
+
 	//get list of authors with non-empty values
 	protected List<Author> getNonEmptyAuthorsList(List<Author> allAuthors){
 		List<Author> authors = new ArrayList<Author>();
@@ -34,4 +50,5 @@ public class PublisherAppAction  extends ActionSupport{
 		
 		return authors;
 	}
+	
 }

@@ -8,9 +8,17 @@
 	<h3><s:property value="%{getText('addComicBook.heading')}"/></h3>
 	<s:actionerror/>
 	<s:fielderror/>
-	<s:form theme="simple">
+	<s:form theme="simple" enctype="multipart/form-data">
 		<table>
 			<%@ include file="ComicBook.jsp" %>
+			<tr>
+				<td>
+					<s:property value="%{getText('comicBook.coverImage')}"/>
+				</td>
+				<td>
+					<s:file name="comicBook.attachment"/>
+				</td>
+			</tr>
 			<tr>
 				<td colspan="2"  align="center">
 					<s:submit action="addComicBook" namespace="book" key="label.add"/>

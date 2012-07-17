@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import main.java.com.vinuta.dto.ComicBookDTO;
+import main.java.com.vinuta.dto.NovelDTO;
 import main.java.com.vinuta.entity.Chapter;
 import main.java.com.vinuta.entity.ComicBook;
 import main.java.com.vinuta.entity.Novel;
@@ -18,8 +20,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 
 @Scope("prototype")
-@SuppressWarnings("serial")
 public class BookAction extends PublisherAppAction{
+
+	private static final long serialVersionUID = -2322939872905264367L;
 
 	private Logger logger = Logger.getLogger(this.getClass());
 	
@@ -29,6 +32,8 @@ public class BookAction extends PublisherAppAction{
 	private List<Novel> novels;
 	private ComicBook comicBook;
 	private Novel novel;
+	private NovelDTO novelDTO;
+	private ComicBookDTO comicBookDTO;
 	
 	@Autowired
 	private BookService bookServiceImpl;
@@ -73,9 +78,26 @@ public class BookAction extends PublisherAppAction{
 	public void setNovels(List<Novel> novels) {
 		this.novels = novels;
 	}
+	
+	public NovelDTO getNovelDTO() {
+		return novelDTO;
+	}
+
+	public void setNovelDTO(NovelDTO novelDTO) {
+		this.novelDTO = novelDTO;
+	}
+
+	public ComicBookDTO getComicBookDTO() {
+		return comicBookDTO;
+	}
+
+	public void setComicBookDTO(ComicBookDTO comicBookDTO) {
+		this.comicBookDTO = comicBookDTO;
+	}
 
 	public String addComicBook(){
 		comicBook.setAuthors(this.getNonEmptyAuthorsList(comicBook.getAuthors()));
+		comicBook.convertAttachmentToByte();
 		try{
 			this.bookServiceImpl.addBook(comicBook);
 		}
@@ -136,6 +158,10 @@ public class BookAction extends PublisherAppAction{
 	
 	public String deleteNovel(){
 		this.bookServiceImpl.deleteBook(novel.getId());
+		return SUCCESS;
+	}
+	
+	public String searchNovels(){
 		return SUCCESS;
 	}
 	

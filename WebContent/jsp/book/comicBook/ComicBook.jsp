@@ -30,6 +30,14 @@
 			</s:else>	
 		</td>
 	</tr>
+	<tr>	
+		<td>
+			<s:property value="%{getText('comicBook.noOfPages')}"/>
+		</td>
+		<td>
+			<s:textfield  key="comicBook.noOfPages" />
+		</td>
+	</tr>
 	<s:iterator value='new int[@main.java.com.vinuta.action.BookAction@NO_OF_AUTHORS]' 
 				status="authorStat"> 
 		<tr>	

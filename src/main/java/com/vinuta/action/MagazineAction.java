@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import main.java.com.vinuta.dto.MagazineDTO;
 import main.java.com.vinuta.entity.Article;
 import main.java.com.vinuta.entity.Magazine;
 import main.java.com.vinuta.service.MagazineService;
@@ -16,14 +17,16 @@ import org.springframework.dao.DataIntegrityViolationException;
 
 
 @Scope("prototype")
-@SuppressWarnings("serial")
 public class MagazineAction extends PublisherAppAction{
+	private static final long serialVersionUID = 856347245739524297L;
+
 	@Autowired
 	private MagazineService magazineServiceImpl;
 	
 	private Logger logger = Logger.getLogger(this.getClass());
 	private List<Magazine> magazines;
 	private Magazine magazine;
+	private MagazineDTO magazineDTO;
 	public static Integer NO_OF_ARTICLES = 5;
 	public static Integer NO_OF_AUTHORS = 4;
 	
@@ -51,6 +54,14 @@ public class MagazineAction extends PublisherAppAction{
 		this.magazine = magazine;
 	}
 	
+	public MagazineDTO getMagazineDTO() {
+		return magazineDTO;
+	}
+
+	public void setMagazineDTO(MagazineDTO magazineDTO) {
+		this.magazineDTO = magazineDTO;
+	}
+
 	public String execute(){
 		return SUCCESS;
 	}
@@ -87,6 +98,10 @@ public class MagazineAction extends PublisherAppAction{
 	
 	public String deleteMagazine(){
 		this.magazineServiceImpl.deleteMagazine(this.magazine.getId());
+		return SUCCESS;
+	}
+	
+	public String searchMagazines(){
 		return SUCCESS;
 	}
 	
