@@ -37,7 +37,8 @@ public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public List<Office> listOffices() {
 		// TODO Auto-generated method stub
-		Query officQuery = this.currentSession().createQuery("from Office");
+		Query officQuery = this.currentSession().createQuery("from Office office" +
+				" order by office.name");
 		return officQuery.list();
 	}
 

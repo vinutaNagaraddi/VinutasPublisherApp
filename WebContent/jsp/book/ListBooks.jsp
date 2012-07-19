@@ -28,7 +28,7 @@
 		    		<s:property value="#formatedComicBookPublishDate"/>
 		    	</td>
 		    	<td>
-		    		<s:url action="showComicBookDetails" id="showComicBookDetails">
+		    		<s:url action="showComicBookDetails"  id="showComicBookDetails">
 						<s:param name="comicBook.id" value="id"/>
 					</s:url>
 					<s:url action="showUpdateComicBookJSP" id="showUpdateComicBookJSP">
@@ -70,11 +70,19 @@
 			</s:iterator>
 			<tr>
 				<td colspan="4" align="center">
-					<s:submit action="showAddNovelJSP" namespace="book" value="Add Novel"/>
-					<s:submit action="showAddComicBookJSP" namespace="book" value="Add Comic Book"/>
+					<s:submit action="showAddNovelJSP"  key="label.addNovel"/>
+					<s:submit action="showAddComicBookJSP"  key="label.addComicBook"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="center">
+					<s:url namespace="/VinutasPublisherApp/" id="homeLink"/>
+					<s:a href="%{homeLink}">Home</s:a>
 				</td>
 			</tr>
 		</table>
 	</s:form>
 </body>
 </html>
+
+

@@ -70,8 +70,8 @@
 			</tr>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="searchComicBooks" namespace="book" key="label.search"/>
-					<s:submit action="listBooks" namespace="book" key="label.cancel"/>
+					<s:submit action="searchComicBooks" key="label.search"/>
+					<s:submit action="listBooks" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>

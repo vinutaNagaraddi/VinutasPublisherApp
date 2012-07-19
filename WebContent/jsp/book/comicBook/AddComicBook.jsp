@@ -12,17 +12,9 @@
 		<table>
 			<%@ include file="ComicBook.jsp" %>
 			<tr>
-				<td>
-					<s:property value="%{getText('comicBook.coverImage')}"/>
-				</td>
-				<td>
-					<s:file name="comicBook.attachment"/>
-				</td>
-			</tr>
-			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="addComicBook" namespace="book" key="label.add"/>
-					<s:submit action="listBooks" namespace="book" key="label.cancel"/>
+					<s:submit action="addComicBook" key="label.add"/>
+					<s:submit action="listBooks" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>

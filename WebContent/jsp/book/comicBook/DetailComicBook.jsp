@@ -42,6 +42,23 @@
 					<s:property value="comicBook.noOfPages" />
 				</td>
 			</tr>
+			<tr>
+				<td>
+					<s:property value="%{getText('comicBook.coverImage')}"/>
+				</td>
+				<td>
+					<s:url action="getImage?comicBook.id=%{comicBook.id}" id="url"/>
+					<img src="<s:property value='#url'/>" width="100" height="100"/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<s:property value="%{getText('comicBook.fileName')}"/>
+				</td>
+				<td>
+					<s:property value="comicBook.attachmentFileName"/>
+				</td>
+			</tr>
 			<s:iterator value='comicBook.authors' status="authorStat"> 
 				<tr>	
 					<td>
@@ -55,7 +72,7 @@
 			</s:iterator>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="listBooks" namespace="book" value="List Books"/>
+					<s:submit action="listBooks" key="label.listBooks"/>
 				</td>
 			</tr>
 		</table>

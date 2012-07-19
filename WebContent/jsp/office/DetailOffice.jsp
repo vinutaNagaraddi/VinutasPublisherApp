@@ -42,7 +42,7 @@
 			</tr>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="listOffices" namespace="office" value="List Offices"/>
+					<s:submit action="listOffices" key="label.listOffices"/>
 				</td>
 			</tr>
 		</table>

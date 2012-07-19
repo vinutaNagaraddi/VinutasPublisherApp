@@ -20,10 +20,10 @@
 <s:url action="showSearchMagazineJSP" namespace="magazine" id="showSearchMagazineJSP"/>
 <s:a href="%{showSearchMagazineJSP}">Search all magazines</s:a>
 <p/>
-<s:url action="showSearchNovelJSP" namespace="book" id="showSearchNovelJSP"/>
+<s:url action="showSearchNovelJSP" namespace="novel" id="showSearchNovelJSP"/>
 <s:a href="%{showSearchNovelJSP}">Search all novels</s:a>
 <p/>
-<s:url action="showSearchComicBooksJSP" namespace="book" id="showSearchComicBooksJSP"/>
+<s:url action="showSearchComicBooksJSP" namespace="comicBook" id="showSearchComicBooksJSP"/>
 <s:a href="%{showSearchComicBooksJSP}">Search all comic Books</s:a>
 
 

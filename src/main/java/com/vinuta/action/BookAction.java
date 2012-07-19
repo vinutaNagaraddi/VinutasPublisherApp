@@ -1,5 +1,10 @@
 package main.java.com.vinuta.action;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,10 +17,14 @@ import main.java.com.vinuta.entity.Novel;
 import main.java.com.vinuta.service.BookService;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.dispatcher.StreamResult;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataIntegrityViolationException;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.Result;
 
 
 
@@ -97,7 +106,7 @@ public class BookAction extends PublisherAppAction{
 
 	public String addComicBook(){
 		comicBook.setAuthors(this.getNonEmptyAuthorsList(comicBook.getAuthors()));
-		comicBook.convertAttachmentToByte();
+		comicBook.convertFileToByte();
 		try{
 			this.bookServiceImpl.addBook(comicBook);
 		}
@@ -110,6 +119,7 @@ public class BookAction extends PublisherAppAction{
 	
 	public String updateComicBook(){
 		comicBook.setAuthors(this.getNonEmptyAuthorsList(comicBook.getAuthors()));
+		comicBook.convertUpdatedFileToByte();
 		try{
 			this.bookServiceImpl.updateBook(comicBook);
 		}
@@ -174,6 +184,23 @@ public class BookAction extends PublisherAppAction{
 		this.comicBooks = this.bookServiceImpl.listComicBooks();
 		this.novels = this.bookServiceImpl.listNovels();
 		return SUCCESS;
+	}
+	
+	public InputStream getInputStream() {
+		this.getComicBookById();
+		try {
+			Result result = (Result) ActionContext.getContext().getActionInvocation().getResult();
+			if (result != null && result instanceof StreamResult){
+				StreamResult streamResult = (StreamResult) result;
+				streamResult.setContentType(comicBook.getAttachmentContentType());
+			}
+			
+			return new ByteArrayInputStream(comicBook.getAttachmentArray());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			logger.warn(e);
+		}
+		return null;
 	}
 	
 	private List<Chapter> getNonEmptyChaptersList(List<Chapter> allChapters) {

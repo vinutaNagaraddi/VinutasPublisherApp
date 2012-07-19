@@ -78,8 +78,8 @@
 			</tr>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="searchMagazines" namespace="magazine" key="label.search"/>
-					<s:submit action="listMagazines" namespace="magazine" key="label.cancel"/>
+					<s:submit action="searchMagazines" key="label.search"/>
+					<s:submit action="listMagazines" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>

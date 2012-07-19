@@ -15,8 +15,8 @@
 			<%@ include file="Magazine.jsp" %>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="updateMagazine" namespace="magazine" key="label.update"/>
-					<s:submit action="listMagazines" namespace="magazine" key="label.cancel"/>
+					<s:submit action="updateMagazine" key="label.update"/>
+					<s:submit action="listMagazines" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>

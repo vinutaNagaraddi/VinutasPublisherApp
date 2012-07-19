@@ -46,7 +46,11 @@
     </package>
     
      <package name="book" namespace="/book" extends="struts-default">
-     	<action name="showAddComicBookJSP" class="bookAction">
+     	<action name="listBooks" class="bookAction" method="listBooks">
+			<result >/jsp/book/ListBooks.jsp</result>
+		</action>
+		<!-- comic book action mapping -->
+		<action name="showAddComicBookJSP" class="bookAction">
 			<result>/jsp/book/comicBook/AddComicBook.jsp</result>
 		</action>
 		<action name="addComicBook" class="bookAction" method="addComicBook">
@@ -72,6 +76,12 @@
     	<action name="searchComicBooks" class="bookAction" method="searchComicBooks">
 			<result>/jsp/book/comicBook/SearchComicBooks.jsp</result>
 		</action>
+		<action name="getImage" class="bookAction">
+			<result name="success" type="stream">
+				<param name="inputName">inputStream</param>
+			</result>
+		</action>
+		<!-- novel action mappin -->
 		<action name="showAddNovelJSP" class="bookAction">
 			<result>/jsp/book/novel/AddNovel.jsp</result>
 		</action>
@@ -98,11 +108,8 @@
     	<action name="searchNovels" class="bookAction" method="searchNovels">
 			<result>/jsp/book/novel/SearchNovels.jsp</result>
 		</action>
-		<action name="listBooks" class="bookAction" method="listBooks">
-			<result >/jsp/book/ListBooks.jsp</result>
-		</action>
-    </package>
-    
+	</package>
+	
      <package name="office" namespace="/office" extends="struts-default">
      	<action name="showAddOfficeJSP" class="officeAction">
 			<result>/jsp/office/AddOffice.jsp</result>

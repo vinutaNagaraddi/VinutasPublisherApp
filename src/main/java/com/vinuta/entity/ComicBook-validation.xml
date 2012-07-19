@@ -8,16 +8,22 @@
             <message key="error.required"/>
         </field-validator>
 	</field>
+	<field name="comicBook.price">
+		<field-validator type="double">
+			<param name="minInclusive">0.01</param>
+			<message key="error.price.minAmount"/>
+        </field-validator>
+	</field>
 	<field name="comicBook.publishDate">
         <field-validator type="date">
   			<param name="min">01/01/2000</param>
  			<message key="error.publishDate.minDate"/>
   		</field-validator>
 	</field>
-	<field name="comicBook.price">
-		<field-validator type="double">
-			<param name="minInclusive">0.01</param>
-			<message key="error.price.minAmount"/>
+	<field name="noOfPages">
+		<field-validator type="int">
+			<param name="min">1</param>
+            <message key="error.comicBook.noOfPages"/>
         </field-validator>
 	</field>
 	<field name="comicBook.authors">

@@ -43,7 +43,7 @@
 			</s:iterator>
 			<tr>
 				<td colspan="4" align="center">
-					<s:submit action="showAddOfficeJSP" namespace="office" value="Add Office"/>
+					<s:submit action="showAddOfficeJSP" key="label.addOffice"/>
 				</td>
 			</tr>
 		</table>

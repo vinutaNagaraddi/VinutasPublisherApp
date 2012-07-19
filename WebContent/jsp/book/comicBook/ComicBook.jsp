@@ -1,5 +1,4 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
 	<tr>	
 		<td class="requiredField">
 			<s:property value="%{getText('comicBook.name')}"/>
@@ -38,6 +37,43 @@
 			<s:textfield  key="comicBook.noOfPages" />
 		</td>
 	</tr>
+	<s:if test="%{comicBook.id != null}">
+		<tr>
+			<td>
+				<s:property value="%{getText('comicBook.coverImage')}"/>
+			</td>
+			<td>
+				<s:url action="getImage?comicBook.id=%{comicBook.id}" id="url"/>
+				<img src="<s:property value='#url'/>" width="100" height="100"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<s:property value="%{getText('comicBook.fileName')}"/>
+			</td>
+			<td>
+				<s:property value="comicBook.attachmentFileName"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<s:property value="%{getText('comicBook.coverImage')}"/>
+			</td>
+			<td>
+				<s:file name="comicBook.updatedAttachment"/>
+			</td>
+		</tr>
+	</s:if>
+	<s:else>
+		<tr>
+			<td>
+				<s:property value="%{getText('comicBook.coverImage')}"/>
+			</td>
+			<td>
+				<s:file name="comicBook.attachment"/>
+			</td>
+		</tr>
+	</s:else>
 	<s:iterator value='new int[@main.java.com.vinuta.action.BookAction@NO_OF_AUTHORS]' 
 				status="authorStat"> 
 		<tr>	

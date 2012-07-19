@@ -17,8 +17,8 @@
 			<%@ include file="Office.jsp" %>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="updateOffice" namespace="office" key="label.add"/>
-					<s:submit action="listOffices" namespace="office" key="label.cancel"/>
+					<s:submit action="updateOffice" key="label.update"/>
+					<s:submit action="listOffices" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>

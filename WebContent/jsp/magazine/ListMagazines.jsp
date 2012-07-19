@@ -44,7 +44,7 @@
 			</s:iterator>
 			<tr>
 				<td colspan="4" align="center">
-					<s:submit action="showAddMagazineJSP" namespace="magazine" value="Add Magazine"/>
+					<s:submit action="showAddMagazineJSP" key="label.addMagazine"/>
 				</td>
 			</tr>
 		</table>

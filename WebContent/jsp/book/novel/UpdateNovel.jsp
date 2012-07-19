@@ -17,8 +17,8 @@
 			<%@ include file="Novel.jsp" %>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="updateNovel" namespace="book" key="label.update"/>
-					<s:submit action="listBooks" namespace="book" key="label.cancel"/>
+					<s:submit action="updateNovel" key="label.update"/>
+					<s:submit action="listBooks" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>

@@ -13,8 +13,8 @@
 			<%@ include file="Magazine.jsp" %>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="addMagazine" namespace="magazine" key="label.add"/>
-					<s:submit action="listMagazines" namespace="magazine" key="label.cancel"/>
+					<s:submit action="addMagazine" key="label.add"/>
+					<s:submit action="listMagazines" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>
