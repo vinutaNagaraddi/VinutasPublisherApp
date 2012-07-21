@@ -38,9 +38,14 @@ public class ComicBook extends Book{
 	private String attachmentContentType;
 	
 	@Transient
+	private byte[] updatedAttachmentArray;
+	
+	@Transient
 	private File updatedAttachment;
+	
 	@Transient
 	private String updatedAttachmentFileName;
+	
 	@Transient
 	private String updatedAttachmentContentType;
 	
@@ -68,7 +73,14 @@ public class ComicBook extends Book{
 		this.attachmentContentType = attachmentContentType;
 	}
 
-	
+	public byte[] getUpdatedAttachmentArray() {
+		return updatedAttachmentArray;
+	}
+
+	public void setUpdatedAttachmentArray(byte[] updatedAttachmentArray) {
+		this.updatedAttachmentArray = updatedAttachmentArray;
+	}
+
 	public File getUpdatedAttachment() {
 		return updatedAttachment;
 	}
@@ -118,38 +130,30 @@ public class ComicBook extends Book{
 	}
 
 	public void convertFileToByte() {
-		if (attachment != null){
-			byte[] bFile = new byte[(int) attachment.length()];
-			 
-		     FileInputStream fileInputStream;
-			try {
-				fileInputStream = new FileInputStream(attachment);
-				fileInputStream.read(bFile);
-			    fileInputStream.close();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	        this.attachmentArray = bFile;
-		}
+	    this.attachmentArray = this.covertToByteArray(attachment);
 	}
 	
 	public void convertUpdatedFileToByte(){
-		if (updatedAttachment != null){
-			byte[] bFile = new byte[(int) updatedAttachment.length()];
+	    this.updatedAttachmentArray = this.covertToByteArray(updatedAttachment);
+	}
+	
+	private byte[] covertToByteArray(File file){
+		if (file != null){
+			byte[] bFile = new byte[(int) file.length()];
 			 
 		     FileInputStream fileInputStream;
 			try {
-				fileInputStream = new FileInputStream(updatedAttachment);
+				fileInputStream = new FileInputStream(file);
 				fileInputStream.read(bFile);
 			    fileInputStream.close();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        this.attachmentArray = bFile;
-	        this.attachmentContentType = this.updatedAttachmentContentType;
-	        this.attachmentFileName = this.updatedAttachmentFileName;
+			
+			return bFile;
 		}
+		
+		return null;
 	}
 }

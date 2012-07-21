@@ -44,9 +44,9 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public List<Book> listBooks() {
+	public void updateComicBook(ComicBook comicBook) {
 		// TODO Auto-generated method stub
-		return this.bookDAOImpl.listBooks();
+		this.bookDAOImpl.updateComicBook(comicBook);
 	}
 
 	@Override

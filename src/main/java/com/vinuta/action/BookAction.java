@@ -1,13 +1,12 @@
 package main.java.com.vinuta.action;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import main.java.com.vinuta.dto.ComicBookDTO;
 import main.java.com.vinuta.dto.NovelDTO;
@@ -17,7 +16,9 @@ import main.java.com.vinuta.entity.Novel;
 import main.java.com.vinuta.service.BookService;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.dispatcher.StreamResult;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -46,7 +47,6 @@ public class BookAction extends PublisherAppAction{
 	
 	@Autowired
 	private BookService bookServiceImpl;
-	
 	
 	public BookService getBookServiceImpl() {
 		return bookServiceImpl;
@@ -121,7 +121,7 @@ public class BookAction extends PublisherAppAction{
 		comicBook.setAuthors(this.getNonEmptyAuthorsList(comicBook.getAuthors()));
 		comicBook.convertUpdatedFileToByte();
 		try{
-			this.bookServiceImpl.updateBook(comicBook);
+			this.bookServiceImpl.updateComicBook(comicBook);
 		}
 		catch(DataIntegrityViolationException ue){
 			this.addActionError(this.getText("unique.comicBook.exception"));
@@ -223,4 +223,5 @@ public class BookAction extends PublisherAppAction{
 		}
 		return chapters;
 	}
+
 }

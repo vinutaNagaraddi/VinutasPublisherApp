@@ -6,7 +6,6 @@
 <struts>
 
 	<constant name="struts.devMode" value="true" />
-
 	<package name="basicPackage" extends="struts-default">
 		<action name="hello">
 			<result>HelloWorldTest.jsp</result>

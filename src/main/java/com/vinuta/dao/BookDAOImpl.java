@@ -29,19 +29,26 @@ public class BookDAOImpl extends PublisherAppDAO implements BookDAO{
 		this.merge(book);
 	}
 
+	public void updateComicBook(ComicBook comicBook){
+		ComicBook persistedComicBook = (ComicBook) this.getBookById(comicBook.getId());
+		if (comicBook.getUpdatedAttachmentArray() != null){
+			comicBook.setAttachmentArray(comicBook.getUpdatedAttachmentArray());
+			comicBook.setAttachmentContentType(comicBook.getUpdatedAttachmentContentType());
+			comicBook.setAttachmentFileName(comicBook.getUpdatedAttachmentFileName());
+		}else{
+			comicBook.setAttachmentArray(persistedComicBook.getAttachmentArray());
+			comicBook.setAttachmentContentType(persistedComicBook.getAttachmentContentType());
+			comicBook.setAttachmentFileName(persistedComicBook.getAttachmentFileName());
+		}
+		comicBook.setAuthors(this.getAuthorsListWithNewAndExistingAuthors(comicBook.getAuthors()));
+		this.merge(comicBook);
+	}
+	
 	@Override
 	public void deleteBook(Long id) {
 		// TODO Auto-generated method stub
 		Book book = (Book) this.currentSession().get(Book.class, id);
 		this.delete(book);
-	}
-
-	@Override
-	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
-	public List<Book> listBooks() {
-		// TODO Auto-generated method stub
-		Query bookQuery = this.currentSession().createQuery("from Book");
-		return bookQuery.list();
 	}
 
 	@Override
@@ -52,6 +59,7 @@ public class BookDAOImpl extends PublisherAppDAO implements BookDAO{
 	}
 	
 	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public List<ComicBook> listComicBooks() {
 		// TODO Auto-generated method stub
 		Query bookQuery = this.currentSession().createQuery("from ComicBook cb" +
@@ -60,6 +68,7 @@ public class BookDAOImpl extends PublisherAppDAO implements BookDAO{
 	}
 
 	@Override
+	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public List<Novel> listNovels() {
 		// TODO Auto-generated method stub
 		Query bookQuery = this.currentSession().createQuery("from Novel n" +

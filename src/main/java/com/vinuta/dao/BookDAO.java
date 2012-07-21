@@ -11,8 +11,8 @@ import main.java.com.vinuta.entity.Novel;
 public interface BookDAO {
 	void addBook(Book book);
 	void updateBook(Book book);
+	void updateComicBook(ComicBook book);
 	void deleteBook(Long id);
-	List<Book> listBooks();
 	Book getBook(Long bookId);
 	List<ComicBook> listComicBooks();
 	List<Novel> listNovels();

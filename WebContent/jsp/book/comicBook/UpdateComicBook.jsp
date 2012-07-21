@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
+
 <html>
 <head>
 <title>Update Comic Book</title>
@@ -11,6 +12,7 @@
 	<s:form theme="simple" enctype="multipart/form-data">
 		<s:hidden name="comicBook.id" />
 		<s:hidden name="comicBook.version" />
+		<s:hidden name="comicBook.attachmentFileName"/>
 		<table>
 			<%@ include file="ComicBook.jsp" %>
 			<tr>
