@@ -51,6 +51,7 @@
 		<!-- comic book action mapping -->
 		<action name="showAddComicBookJSP" class="bookAction">
 			<result>/jsp/book/comicBook/AddComicBook.jsp</result>
+			<result name="input">/jsp/book/comicBook/AddComicBook.jsp</result>
 		</action>
 		<action name="addComicBook" class="bookAction" method="addComicBook">
 			<result name="success" type="redirectAction">listBooks</result> 
@@ -58,6 +59,7 @@
 		</action>
 		<action name="showUpdateComicBookJSP" class="bookAction" method="getComicBookById">
 			<result>/jsp/book/comicBook/UpdateComicBook.jsp</result>
+			<result name="input">/jsp/book/comicBook/UpdateComicBook.jsp</result>
 		</action>
 		<action name="updateComicBook" class="bookAction" method="updateComicBook">
 			<result name="success" type="redirectAction">listBooks</result> 
