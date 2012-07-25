@@ -140,6 +140,11 @@ public class BookAction extends PublisherAppAction{
 		return SUCCESS;
 	}
 	
+	public String searchComicBooks(){
+		this.comicBooks = this.bookServiceImpl.searchComicBooks(this.comicBookDTO);
+		return SUCCESS;
+	}
+	
 	public String addNovel(){
 		novel.setAuthors(this.getNonEmptyAuthorsList(novel.getAuthors()));
 		novel.setChapters(this.getNonEmptyChaptersList(novel.getChapters()));
@@ -172,6 +177,7 @@ public class BookAction extends PublisherAppAction{
 	}
 	
 	public String searchNovels(){
+		this.novels = this.bookServiceImpl.searchNovels(this.novelDTO);
 		return SUCCESS;
 	}
 	

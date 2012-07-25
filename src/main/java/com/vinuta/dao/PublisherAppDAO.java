@@ -37,7 +37,7 @@ protected List<Author> getAuthorsListWithNewAndExistingAuthors(List<Author> auth
 	
 	//find an existing author using firstname and lastname
 	protected Author getAuthorByName(String lastName, String firstName){
-		Query authorQuery = this.currentSession().createQuery("from Author where lastName=:lastName and firstName=:firstName");
+		Query authorQuery = this.createQuery("from Author where lastName=:lastName and firstName=:firstName");
 		authorQuery.setString("lastName", lastName);
 		authorQuery.setString("firstName", firstName);
 		return (Author) authorQuery.uniqueResult();

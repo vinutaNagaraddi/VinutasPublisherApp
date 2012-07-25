@@ -55,14 +55,6 @@ public class Book implements Serializable{
 	
 	public Book(){};
 	
-	public Book(String name, Double price, Date publishDate, List<Author> authors) {
-		super();
-		this.name = name;
-		this.price = price;
-		this.publishDate = publishDate;
-		this.authors = authors;
-	}
-
 	public Long getId() {
 		return id;
 	}

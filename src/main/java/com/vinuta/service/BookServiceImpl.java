@@ -4,6 +4,8 @@ import java.util.List;
 
 import main.java.com.vinuta.dao.BookDAO;
 import main.java.com.vinuta.dao.MagazineDAO;
+import main.java.com.vinuta.dto.ComicBookDTO;
+import main.java.com.vinuta.dto.NovelDTO;
 import main.java.com.vinuta.entity.Book;
 import main.java.com.vinuta.entity.ComicBook;
 import main.java.com.vinuta.entity.Novel;
@@ -65,5 +67,17 @@ public class BookServiceImpl implements BookService{
 	public List<Novel> listNovels() {
 		// TODO Auto-generated method stub
 		return this.bookDAOImpl.listNovels();
+	}
+
+	@Override
+	public List<Novel> searchNovels(NovelDTO novelDTO) {
+		// TODO Auto-generated method stub
+		return this.bookDAOImpl.searchNovels(novelDTO);
+	}
+
+	@Override
+	public List<ComicBook> searchComicBooks(ComicBookDTO comicBookDTO) {
+		// TODO Auto-generated method stub
+		return this.bookDAOImpl.searchComicBooks(comicBookDTO);
 	}
 }

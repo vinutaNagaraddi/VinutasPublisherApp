@@ -82,6 +82,32 @@
 					<s:submit action="listBooks" key="label.cancel"/>
 				</td>
 			</tr>
+			<s:if test="%{novels != null}">
+				<tr>
+					<td colspan="2">
+						<table width="100%">
+							<tr>
+								<th><s:property value="%{getText('novel.name')}"/></th>
+								<th><s:property value="%{getText('novel.isbn')}"/></th>
+								<th><s:property value="%{getText('novel.publishDate')}"/></th>
+								<th><s:property value="%{getText('novel.price')}"/></th>
+							</tr>
+							<s:iterator value="novels" status="rowstatus">
+								<tr>
+							    	<td><s:property value="name"/></td>
+							    	<td><s:property value="isbn"/></td>
+							    	<td>
+							    		<s:set name="#formatedNovelPublishDate" value=""/>
+										<s:date name="publishDate" var="#formatedNovelPublishDate" format = "MM/dd/yyyy"/>
+							    		<s:property value="#formatedNovelPublishDate"/>
+							    	</td>
+							    	<td><s:property value="price"/></td>
+							  	</tr>
+							</s:iterator>
+						</table>
+					</td>
+				</tr>
+			</s:if>
 		</table>
 	</s:form>
 </body>

@@ -29,7 +29,7 @@ public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 	@Override
 	public void deleteOffice(Long id) {
 		// TODO Auto-generated method stub
-		Office office = (Office) this.currentSession().get(Office.class, id);
+		Office office = (Office) this.get(Office.class, id);
 		this.delete(office);
 	}
 
@@ -37,7 +37,7 @@ public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public List<Office> listOffices() {
 		// TODO Auto-generated method stub
-		Query officQuery = this.currentSession().createQuery("from Office office" +
+		Query officQuery = this.createQuery("from Office office" +
 				" order by office.name");
 		return officQuery.list();
 	}
@@ -47,7 +47,7 @@ public class OfficeDAOImpl extends PublisherAppDAO implements OfficeDAO{
 	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public Office getOffice(Long id) {
 		// TODO Auto-generated method stub
-		Office office = (Office) this.currentSession().get(Office.class, id);
+		Office office = (Office) this.get(Office.class, id);
 		return office;
 	}
 }

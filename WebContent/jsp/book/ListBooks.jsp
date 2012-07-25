@@ -76,7 +76,7 @@
 			</tr>
 			<tr>
 				<td colspan="4" align="center">
-					<s:url namespace="/VinutasPublisherApp/" id="homeLink"/>
+					<s:url action="homePage" namespace="/home" id="homeLink"/>
 					<s:a href="%{homeLink}">Home</s:a>
 				</td>
 			</tr>

@@ -8,22 +8,22 @@
 </head>
 <body>
 
-<s:url action="listMagazines" namespace="magazine" id="listMagazines"/>
+<s:url action="listMagazines" namespace="/magazine" id="listMagazines"/>
 <s:a href="%{listMagazines}">List all Magazine</s:a>
 <p/>
-<s:url action="listBooks" namespace="book" id="listBooks"/>
+<s:url action="listBooks" namespace="/book" id="listBooks"/>
 <s:a href="%{listBooks}">List all Books</s:a>
 <p/>
-<s:url action="listOffices" namespace="office" id="listOffices"/>
+<s:url action="listOffices" namespace="/office" id="listOffices"/>
 <s:a href="%{listOffices}">List all Offices</s:a>
 <p/>
-<s:url action="showSearchMagazineJSP" namespace="magazine" id="showSearchMagazineJSP"/>
+<s:url action="showSearchMagazineJSP" namespace="/magazine" id="showSearchMagazineJSP"/>
 <s:a href="%{showSearchMagazineJSP}">Search all magazines</s:a>
 <p/>
-<s:url action="showSearchNovelJSP" namespace="novel" id="showSearchNovelJSP"/>
+<s:url action="showSearchNovelJSP" namespace="/book" id="showSearchNovelJSP"/>
 <s:a href="%{showSearchNovelJSP}">Search all novels</s:a>
 <p/>
-<s:url action="showSearchComicBooksJSP" namespace="comicBook" id="showSearchComicBooksJSP"/>
+<s:url action="showSearchComicBooksJSP" namespace="/book" id="showSearchComicBooksJSP"/>
 <s:a href="%{showSearchComicBooksJSP}">Search all comic Books</s:a>
 
 

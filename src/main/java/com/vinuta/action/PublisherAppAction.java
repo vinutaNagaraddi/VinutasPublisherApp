@@ -1,14 +1,13 @@
 package main.java.com.vinuta.action;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 import org.springframework.context.annotation.Scope;
 
-import main.java.com.vinuta.entity.Article;
 import main.java.com.vinuta.entity.Author;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,12 +16,14 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class PublisherAppAction  extends ActionSupport{
 	
-	private static Map<String,String> symbols = new TreeMap<String,String>();
+	private static Map<String,String> symbols = new HashMap<String,String>();
+	public static String LESSTHANEQUAL = "lessThanOrEqual";
+	public static String GREATERTHANEQUAL = "greaterThanOrEqual";
 	
 	
 	static{
-		symbols.put("greaterThanOrEqual", "Greater Than or Equal");
 		symbols.put("lessThanOrEqual", "Less Than or Equal");
+		symbols.put("greaterThanOrEqual", "Greater Than or Equal");
 	}
 	
 	

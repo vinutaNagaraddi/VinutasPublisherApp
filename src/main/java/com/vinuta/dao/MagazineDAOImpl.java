@@ -40,7 +40,7 @@ public class MagazineDAOImpl extends PublisherAppDAO implements MagazineDAO{
 	@Transactional(propagation=Propagation.SUPPORTS, readOnly=true)
 	public List<Magazine> listMagazines() {
 		// TODO Auto-generated method stub
-		Query magazineQuery = this.currentSession().createQuery(" from Magazine mag" +
+		Query magazineQuery = this.createQuery(" from Magazine mag" +
 				" order by mag.name asc, mag.publishDate asc");
 		return magazineQuery.list();
 	}
@@ -53,7 +53,7 @@ public class MagazineDAOImpl extends PublisherAppDAO implements MagazineDAO{
 	}
 	
 	private Magazine getMagazineById(Long id) {
-		Magazine magazine = (Magazine) this.currentSession().get(Magazine.class, id);
+		Magazine magazine = (Magazine) this.get(Magazine.class, id);
 		return magazine;
 	}
 

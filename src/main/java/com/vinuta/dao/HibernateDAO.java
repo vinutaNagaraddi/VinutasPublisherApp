@@ -1,5 +1,7 @@
 package main.java.com.vinuta.dao;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,7 @@ public class HibernateDAO {
 		this.sessionFactory = sessionFactory;
 	}
 
-	protected Session currentSession(){
+	private Session currentSession(){
 		return this.sessionFactory.getCurrentSession();
 	}
 	
@@ -39,4 +41,15 @@ public class HibernateDAO {
 		currentSession().delete(obj);
 	}
 	
+	protected Query createQuery(String sql){
+		return currentSession().createQuery(sql);
+	}
+	
+	protected Criteria createCritera(Class obj){
+		return currentSession().createCriteria(obj);
+	}
+	
+	protected Object get(Class obj, Long id){
+		return currentSession().get(obj, id);
+	}
 }

@@ -6,9 +6,9 @@
 <struts>
 
 	<constant name="struts.devMode" value="true" />
-	<package name="basicPackage" extends="struts-default">
-		<action name="hello">
-			<result>HelloWorldTest.jsp</result>
+	<package name="home" namespace="/home" extends="struts-default">
+		<action name="homePage" class="publisherAppAction" >
+			<result>/index.jsp</result>
 		</action>
     </package>
     
@@ -108,6 +108,7 @@
 		</action>
     	<action name="searchNovels" class="bookAction" method="searchNovels">
 			<result>/jsp/book/novel/SearchNovels.jsp</result>
+			<result name="input">/jsp/book/novel/SearchNovels.jsp</result>
 		</action>
 	</package>
 	

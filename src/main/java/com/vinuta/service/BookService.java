@@ -2,6 +2,8 @@ package main.java.com.vinuta.service;
 
 import java.util.List;
 
+import main.java.com.vinuta.dto.ComicBookDTO;
+import main.java.com.vinuta.dto.NovelDTO;
 import main.java.com.vinuta.entity.Book;
 import main.java.com.vinuta.entity.ComicBook;
 import main.java.com.vinuta.entity.Magazine;
@@ -16,4 +18,6 @@ public interface BookService {
 	Book getBook(Long id);
 	List<ComicBook> listComicBooks();
 	List<Novel> listNovels();
+	List<Novel> searchNovels(NovelDTO novelDTO);
+	List<ComicBook> searchComicBooks(ComicBookDTO comicBookDTO);
 }

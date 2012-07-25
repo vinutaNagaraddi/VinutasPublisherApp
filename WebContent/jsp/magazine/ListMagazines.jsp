@@ -47,6 +47,12 @@
 					<s:submit action="showAddMagazineJSP" key="label.addMagazine"/>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="4" align="center">
+					<s:url action="homePage" namespace="/home" id="homeLink"/>
+					<s:a href="%{homeLink}">Home</s:a>
+				</td>
+			</tr>
 		</table>
 	</s:form>
 </body>
