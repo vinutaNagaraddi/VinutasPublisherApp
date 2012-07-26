@@ -102,6 +102,7 @@ public class MagazineAction extends PublisherAppAction{
 	}
 	
 	public String searchMagazines(){
+		this.magazines = this.magazineServiceImpl.seachMagazines(magazineDTO);
 		return SUCCESS;
 	}
 	

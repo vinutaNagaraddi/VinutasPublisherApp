@@ -17,14 +17,6 @@
 		</td>
 	</tr>
 	<tr>	
-		<td>
-			<s:property value="%{getText('magazine.avOnline')}"/>
-		</td>
-		<td>
-			<s:checkbox key="magazine.availableOnline"/>
-		</td>
-	</tr>
-	<tr>	
 		<td class="requiredField">
 			<s:property value="%{getText('magazine.publishDate')}"/>
 		</td>
@@ -36,6 +28,14 @@
 			<s:else>
 				<s:textfield key="magazine.publishDate" value="%{#myDateVar}"/>
 			</s:else>	
+		</td>
+	</tr>
+	<tr>	
+		<td>
+			<s:property value="%{getText('magazine.avOnline')}"/>
+		</td>
+		<td>
+			<s:checkbox key="magazine.availableOnline"/>
 		</td>
 	</tr>
 	<s:iterator value='new int[@main.java.com.vinuta.action.MagazineAction@NO_OF_ARTICLES]' 

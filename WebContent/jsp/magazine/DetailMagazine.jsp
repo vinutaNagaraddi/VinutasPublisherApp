@@ -26,19 +26,19 @@
 			</tr>
 			<tr>	
 				<td>
-					<s:property value="%{getText('magazine.avOnline')}"/>
-				</td>
-				<td>
-					<s:checkbox key="magazine.availableOnline" disabled="true"/>
-				</td>
-			</tr>
-			<tr>	
-				<td>
 					<s:property value="%{getText('magazine.publishDate')}"/>
 				</td>
 				<td>
 					<s:date name="magazine.publishDate" var="formatedPublishDate" format = "MM/dd/yyyy"/>
 	    			<s:property value="#formatedPublishDate"/>
+				</td>
+			</tr>
+			<tr>	
+				<td>
+					<s:property value="%{getText('magazine.avOnline')}"/>
+				</td>
+				<td>
+					<s:checkbox key="magazine.availableOnline" disabled="true"/>
 				</td>
 			</tr>
 			<s:iterator value='magazine.articles' status="articleStat"> 

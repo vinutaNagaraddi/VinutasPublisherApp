@@ -38,6 +38,7 @@
 		</action>
     	<action name="searchMagazines" class="magazineAction" method="searchMagazines">
 			<result>/jsp/magazine/SearchMagazines.jsp</result>
+			<result  name="input">/jsp/magazine/SearchMagazines.jsp</result>
 		</action>
 		<action name="listMagazines" class="magazineAction" method="listMagazines">
 			<result >/jsp/magazine/ListMagazines.jsp</result>

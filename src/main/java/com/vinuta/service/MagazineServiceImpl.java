@@ -3,6 +3,7 @@ package main.java.com.vinuta.service;
 import java.util.List;
 
 import main.java.com.vinuta.dao.MagazineDAO;
+import main.java.com.vinuta.dto.MagazineDTO;
 import main.java.com.vinuta.entity.Magazine;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +49,12 @@ public class MagazineServiceImpl implements MagazineService{
 	public Magazine getMagazine(Long id) {
 		// TODO Auto-generated method stub
 		return this.magazineDAOImpl.getMagazine(id);
+	}
+
+	@Override
+	public List<Magazine> seachMagazines(MagazineDTO magazineDTO) {
+		// TODO Auto-generated method stub
+		return this.magazineDAOImpl.searchMagazines(magazineDTO);
 	}
 
 }

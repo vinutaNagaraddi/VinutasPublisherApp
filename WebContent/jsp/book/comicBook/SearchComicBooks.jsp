@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
-<title>Search Novels</title>
+<title>Search ComicBooks</title>
 <link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
@@ -74,33 +74,39 @@
 					<s:submit action="listBooks" key="label.cancel"/>
 				</td>
 			</tr>
-			<s:if test="%{comicBooks != null}">
-				<tr>
-					<td colspan="2">
-						<table width="100%">
-							<tr>
-								<th><s:property value="%{getText('comicBook.name')}"/></th>
-								<th><s:property value="%{getText('comicBook.publishDate')}"/></th>
-								<th><s:property value="%{getText('comicBook.price')}"/></th>
-								<th><s:property value="%{getText('comicBook.fileName')}"/></th>
-							</tr>
-							<s:iterator value="comicBooks" status="rowstatus">
-								<tr>
-							    	<td><s:property value="name"/></td>
-							    	<td>
-							    		<s:set name="#formatedNovelPublishDate" value=""/>
-										<s:date name="publishDate" var="#formatedNovelPublishDate" format = "MM/dd/yyyy"/>
-							    		<s:property value="#formatedNovelPublishDate"/>
-							    	</td>
-							    	<td><s:property value="price"/></td>
-							    	<td><s:property value="attachmentFileName"/></td>
-							  	</tr>
-							</s:iterator>
-						</table>
-					</td>
-				</tr>
-			</s:if>
 		</table>
+		<s:if test="%{comicBooks != null}">
+				<table width="75%">
+					<tr>
+						<th colspan="4" align="center">
+							<s:property value="%{getText('label.searchResults')}"/>
+						</th>
+					</tr>
+					<tr>
+						<th><s:property value="%{getText('comicBook.name')}"/></th>
+						<th><s:property value="%{getText('comicBook.price')}"/></th>
+						<th><s:property value="%{getText('comicBook.publishDate')}"/></th>
+						<th><s:property value="%{getText('label.authors')}"/></th>
+					</tr>
+					<s:iterator value="comicBooks" status="rowstatus">
+						<tr>
+					    	<td><s:property value="name"/></td>
+					    	<td><s:property value="price"/></td>
+					    	<td>
+					    		<s:set name="#formatedPublishDate" value=""/>
+								<s:date name="publishDate" var="#formatedPublishDate" format = "MM/dd/yyyy"/>
+					    		<s:property value="#formatedPublishDate"/>
+					    	</td>
+					    	<td>
+					    		<s:iterator value="authors" status="authorstatus">
+					    			<s:property value="lastName"/>, <s:property value="firstName"/>
+					    			<br>
+					    		</s:iterator>
+					    	</td>
+					  	</tr>
+					</s:iterator>
+				</table>
+			</s:if>
 	</s:form>
 </body>
 </html>

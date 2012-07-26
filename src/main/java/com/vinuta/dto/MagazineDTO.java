@@ -10,6 +10,9 @@ public class MagazineDTO  implements Serializable{
 	private Magazine magazine;
 	private String priceSymbol;
 	private String publishDateSymbol;
+	private String availableOnlineBooleanValue;
+	
+	
 	public Magazine getMagazine() {
 		return magazine;
 	}
@@ -28,5 +31,10 @@ public class MagazineDTO  implements Serializable{
 	public void setPublishDateSymbol(String publishDateSymbol) {
 		this.publishDateSymbol = publishDateSymbol;
 	}
-	
+	public String getAvailableOnlineBooleanValue() {
+		return availableOnlineBooleanValue;
+	}
+	public void setAvailableOnlineBooleanValue(String availableOnlineBooleanValue) {
+		this.availableOnlineBooleanValue = availableOnlineBooleanValue;
+	}
 }

@@ -17,13 +17,18 @@ import com.opensymphony.xwork2.ActionSupport;
 public class PublisherAppAction  extends ActionSupport{
 	
 	private static Map<String,String> symbols = new HashMap<String,String>();
-	public static String LESSTHANEQUAL = "lessThanOrEqual";
-	public static String GREATERTHANEQUAL = "greaterThanOrEqual";
-	
+	public static String LESSTHANEQUAL = "Less Than or Equal";
+	public static String GREATERTHANEQUAL = "Greater Than or Equal";
+	public static String TRUE = "True";
+	public static String FALSE= "False";
+	private static Map<String, String> booleanValues = new HashMap<String, String>();
 	
 	static{
-		symbols.put("lessThanOrEqual", "Less Than or Equal");
-		symbols.put("greaterThanOrEqual", "Greater Than or Equal");
+		symbols.put(LESSTHANEQUAL, LESSTHANEQUAL);
+		symbols.put(GREATERTHANEQUAL, GREATERTHANEQUAL);
+		
+		booleanValues.put(TRUE, TRUE);
+		booleanValues.put(FALSE, FALSE);
 	}
 	
 	
@@ -31,6 +36,9 @@ public class PublisherAppAction  extends ActionSupport{
 		return symbols;
 	}
 
+	public Map<String, String> getBooleanValues() {
+		return booleanValues;
+	}
 
 	//get list of authors with non-empty values
 	protected List<Author> getNonEmptyAuthorsList(List<Author> allAuthors){
