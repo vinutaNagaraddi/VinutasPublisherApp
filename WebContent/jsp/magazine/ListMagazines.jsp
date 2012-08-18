@@ -8,7 +8,7 @@
 	<s:form theme="simple">
 		<table>
 			<tr >
-				<th colspan="4" align="center">
+				<th colspan="4">
 					<s:property value="%{getText('listMazine.heading')}"/>
 				</th>
 			</tr>

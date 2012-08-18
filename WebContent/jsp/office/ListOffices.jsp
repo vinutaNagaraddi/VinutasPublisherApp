@@ -5,10 +5,11 @@
 <link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 <body>
+
 	<s:form theme="simple">
 		<table>
 			<tr >
-				<th colspan="4" align="center">
+				<th colspan="4">
 					<s:property value="%{getText('listOffices.heading')}"/>
 				</th>
 			</tr>

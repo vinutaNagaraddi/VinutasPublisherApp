@@ -1,6 +1,6 @@
 body {
-	margin: 0;
-	font: 8px verdana,arial;
+	margin: 20;
+	font: 14px verdana,arial;
 	text-align:center;
 }
 table{
@@ -11,13 +11,17 @@ table{
 }
 td{
 	border:1px solid black;
-	font: 15px verdana,arial;
+	font: 14px verdana,arial;
 	padding:5px;
 }
 th{
-	font: 20px verdana,arial;
+	font: 16px verdana,arial;
 	border:1px solid black;
 	padding:5px;
+	text-align:center;
+}
+h3{
+	font: 16px verdana,arial;
 }
 .errorMessage{
 	color:red;

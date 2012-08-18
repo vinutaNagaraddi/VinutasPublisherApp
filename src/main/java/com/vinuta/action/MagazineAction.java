@@ -28,7 +28,7 @@ public class MagazineAction extends PublisherAppAction{
 	private Magazine magazine;
 	private MagazineDTO magazineDTO;
 	public static Integer NO_OF_ARTICLES = 5;
-	public static Integer NO_OF_AUTHORS = 4;
+	public static Integer NO_OF_AUTHORS = 3;
 	
 	public MagazineService getMagazineServiceImpl() {
 		return magazineServiceImpl;
