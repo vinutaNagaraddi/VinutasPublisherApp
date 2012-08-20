@@ -68,7 +68,7 @@
 			</s:iterator>
 			<tr>
 				<td colspan="2"  align="center">
-					<s:submit action="listBooks" key="label.listBooks"/>
+					<s:submit action="listNovels" key="label.listNovels"/>
 				</td>
 			</tr>
 		</table>

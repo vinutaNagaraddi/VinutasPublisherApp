@@ -1,5 +1,5 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
-	<table>
+	<table class="fullWidth">
 		<tr>	
 			<td>
 				<s:property value="%{getText('chapter.title')}"/>

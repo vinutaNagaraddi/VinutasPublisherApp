@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 	<s:hidden name="%{'magazine.articles['+#articleStat.index+'].id'}" /> 
     <s:hidden name="%{'magazine.articles['+#articleStat.index+'].version'}"/> 
-	<table>
+	<table class="fullWidth">
 		<tr>	
 			<s:if test="#articleStat.index==0">
 				<td class="requiredField">

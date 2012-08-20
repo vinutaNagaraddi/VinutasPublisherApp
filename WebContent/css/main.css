@@ -7,18 +7,19 @@ table{
 	padding:5px;
 	border-collapse:collapse;
 	border:1px solid black;
+	margin-left: auto; 
+	margin-right: auto; 
 	text-align:left;
 }
 td{
-	border:1px solid black;
 	font: 14px verdana,arial;
+	border:1px solid black;
 	padding:5px;
 }
 th{
 	font: 16px verdana,arial;
 	border:1px solid black;
 	padding:5px;
-	text-align:center;
 }
 h3{
 	font: 16px verdana,arial;
@@ -30,3 +31,17 @@ h3{
 .requiredField{
 	  color:red;
 }
+.fullWidth{
+	width:100%;
+}
+#homePage table {
+	width:100%;
+	border: 0px;
+}
+#homePage td{
+	border: 0px;
+}
+#homePage tr{
+	vertical-align:top;
+}
+

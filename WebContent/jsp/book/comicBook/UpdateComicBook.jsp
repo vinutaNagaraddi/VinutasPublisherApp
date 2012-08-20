@@ -18,7 +18,7 @@
 			<tr>
 				<td colspan="2"  align="center">
 					<s:submit action="updateComicBook" key="label.update"/>
-					<s:submit action="listBooks" key="label.cancel"/>
+					<s:submit action="listComicBooks" key="label.cancel"/>
 				</td>
 			</tr>
 		</table>

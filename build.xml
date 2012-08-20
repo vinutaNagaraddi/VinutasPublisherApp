@@ -76,28 +76,20 @@
 
 	-->
 	
-	<target name="build" depends="compile" description="Copies all non Java classes to build directoy">
+	<target name="build" depends="compile" description="Copies files to build directoy">
 		
 		<copy todir="${build.home}/classes">
 			<fileset dir="${source.home}" excludes="SVN,**/*.java,**/*.class,build.cfg.xml" />
 		</copy>
 	</target>
 	
-	<!-- ==================== Archive Target ================================== -->
-
-	<!--
-
-	  The "archive" target create a binary archive of all files in build.home
-
-	-->
-
 	<path id="classpath.hibernate">
 		<fileset dir="${lib.home}" includes="**/*.jar"/>
 		<pathelement location="${build.classes}"/>
 	</path>
 	
 	<taskdef name="htools" classname="org.hibernate.tool.ant.HibernateToolTask"
-	          classpathref="classpath.hibernate"/>
+	          classpathref="classpath.hibernate" description="Create DDL using build.cfg.xml"/>
 
 	<target name="exportDDL" depends="build">
 		<delete dir="${sqlscripts.home}"/>

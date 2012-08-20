@@ -1,6 +1,6 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 
-	<table>
+	<table class="fullWidth">
 		<tr>	
 			<s:if test="#articleStat.index==0  && #authorStat.index==0">
 				<td class="requiredField">

@@ -1,7 +1,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 	<s:hidden name="%{'novel.chapters['+#chapterStat.index+'].id'}" /> 
     <s:hidden name="%{'novel.chapters['+#chapterStat.index+'].version'}"/> 
-	<table>
+	<table class="fullWidth">
 		<tr>	
 			<s:if test="#chapterStat.index==0">
 				<td class="requiredField">

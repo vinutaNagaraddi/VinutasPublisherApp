@@ -45,17 +45,16 @@
 		</action>
     </package>
     
-     <package name="book" namespace="/book" extends="struts-default">
-     	<action name="listBooks" class="bookAction" method="listBooks">
-			<result >/jsp/book/ListBooks.jsp</result>
+    <package name="comicBook" namespace="/comicBook" extends="struts-default">
+     	<action name="listComicBooks" class="bookAction" method="listComicBooks">
+			<result >/jsp/book/comicBook/ListComicBooks.jsp</result>
 		</action>
-		<!-- comic book action mapping -->
 		<action name="showAddComicBookJSP" class="bookAction">
 			<result>/jsp/book/comicBook/AddComicBook.jsp</result>
 			<result name="input">/jsp/book/comicBook/AddComicBook.jsp</result>
 		</action>
 		<action name="addComicBook" class="bookAction" method="addComicBook">
-			<result name="success" type="redirectAction">listBooks</result> 
+			<result name="success" type="redirectAction">listComicBooks</result> 
   			<result name="input">/jsp/book/comicBook/AddComicBook.jsp</result> 
 		</action>
 		<action name="showUpdateComicBookJSP" class="bookAction" method="getComicBookById">
@@ -63,14 +62,14 @@
 			<result name="input">/jsp/book/comicBook/UpdateComicBook.jsp</result>
 		</action>
 		<action name="updateComicBook" class="bookAction" method="updateComicBook">
-			<result name="success" type="redirectAction">listBooks</result> 
+			<result name="success" type="redirectAction">listComicBooks</result> 
   			<result name="input">/jsp/book/comicBook/UpdateComicBook.jsp</result> 
 		</action>
 		<action name="showComicBookDetails" class="bookAction" method="getComicBookById">
   			<result>/jsp/book/comicBook/DetailComicBook.jsp</result> 
 		</action>
 		<action name="deleteComicBook" class="bookAction" method="deleteComicBook">
-  			<result type="redirectAction">listBooks</result>  
+  			<result type="redirectAction">listComicBooks</result>  
 		</action>
 		<action name="showSearchComicBooksJSP" class="bookAction">
 			<result>/jsp/book/comicBook/SearchComicBooks.jsp</result>
@@ -83,26 +82,31 @@
 				<param name="inputName">inputStream</param>
 			</result>
 		</action>
-		<!-- novel action mappin -->
+	</package>
+		
+	<package name="novel" namespace="/novel" extends="struts-default">
+		<action name="listNovels" class="bookAction" method="listNovels">
+			<result >/jsp/book/novel/ListNovels.jsp</result>
+		</action>
 		<action name="showAddNovelJSP" class="bookAction">
 			<result>/jsp/book/novel/AddNovel.jsp</result>
 		</action>
 		<action name="addNovel" class="bookAction" method="addNovel">
-			<result name="success" type="redirectAction">listBooks</result> 
+			<result name="success" type="redirectAction">listNovels</result> 
   			<result name="input">/jsp/book/novel/AddNovel.jsp</result> 
 		</action>
 		<action name="showUpdateNovelJSP" class="bookAction" method="getNovelById">
 			<result>/jsp/book/novel/UpdateNovel.jsp</result>
 		</action>
 		<action name="updateNovel" class="bookAction" method="updateNovel">
-			<result name="success" type="redirectAction">listBooks</result> 
+			<result name="success" type="redirectAction">listNovels</result> 
   			<result name="input">/jsp/book/novel/UpdateNovel.jsp</result> 
 		</action>
 		<action name="showNovelDetails" class="bookAction" method="getNovelById">
   			<result>/jsp/book/novel/DetailNovel.jsp</result> 
 		</action>
 		<action name="deleteNovel" class="bookAction" method="deleteNovel">
-  			<result type="redirectAction">listBooks</result>  
+  			<result type="redirectAction">listNovels</result>  
 		</action>
 		<action name="showSearchNovelJSP" class="bookAction">
 			<result>/jsp/book/novel/SearchNovels.jsp</result>

@@ -48,7 +48,7 @@
 					<s:property value="%{getText('label.author')}"/>
 				</td>
 				<td>
-					<table>
+					<table class="fullWidth">
 						<tr>	
 							<td>
 								<s:property value="%{getText('author.lastName')}"/>
@@ -71,7 +71,13 @@
 			<tr>
 				<td colspan="2"  align="center">
 					<s:submit action="searchComicBooks" key="label.search"/>
-					<s:submit action="listBooks" key="label.cancel"/>
+					<s:submit action="listComicBooks" key="label.cancel"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<s:url action="homePage" namespace="/home" id="homeLink"/>
+					<s:a href="%{homeLink}">Home</s:a>
 				</td>
 			</tr>
 		</table>

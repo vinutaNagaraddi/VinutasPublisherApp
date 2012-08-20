@@ -58,6 +58,12 @@
 					<s:submit action="listMagazines" key="label.cancel"/>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<s:url action="homePage" namespace="/home" id="homeLink"/>
+					<s:a href="%{homeLink}">Home</s:a>
+				</td>
+			</tr>
 		</table>
 		
 		<s:if test="%{magazines != null}">
